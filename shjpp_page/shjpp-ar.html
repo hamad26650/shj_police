@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../styles.css" />
+  <title>موقع النيابة العامة</title>
+  <style>
+    /* إزالة أي خلفيات من الهيدر */
+    .header-container {
+      background: none !important;
+      background-color: transparent !important;
+    }
+    
+    .header-center {
+      background: none !important;
+      background-color: transparent !important;
+    }
+    
+    body.public-prosecution .header-container {
+      background: none !important;
+      background-color: transparent !important;
+    }
+  </style>
+</head>
+
+<body class="public-prosecution">
+  
+  <!-- ============================== -->
+  <!--            الهيدر             -->
+  <!-- ============================== -->
+  <header>
+    <div class="header-container responsive-header" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; background: none !important; background-color: transparent !important;">
+      
+      <!-- الشعار -->
+      <div class="header-right">
+        <img src="../imgs/shj_police.png" alt="شعار الشرطة" class="logo" />
+      </div>
+
+      <!-- العنوان -->
+      <div class="header-center" style="flex: 1; text-align: center; background: none !important; background-color: transparent !important;">
+        <h1 class="site-title" style="background: none !important; background-color: transparent !important;">موقع النيابة العامة</h1>
+      </div>
+
+      <!-- اللغة والرئيسية -->
+      <div class="header-left" style="display: flex; align-items: center; gap: 10px;">
+        <a href="../home_page/index.html" class="plain-link" title="الصفحة الرئيسية">
+          <img src="../imgs/home_black.png" alt="الرئيسية" style="width: 24px; height: 24px;">
+        </a>
+        <button onclick="toggleLanguagePopup()" class="lang-btn" title="اختر اللغة">
+          <img src="../imgs/world_black.png" alt="اختر اللغة" style="width: 24px; height: 24px;">
+        </button>
+      </div>
+      
+    </div>
+  </header>
+
+  <hr />
+
+  <!-- ============================== -->
+  <!--          المحتوى الرئيسي       -->
+  <!-- ============================== -->
+  <main>
+    
+    <!-- قسم بطاقات الخدمات -->
+    <section class="service-cards">
+      
+      <div class="service-card">
+        
+        <!-- رأس البطاقة -->
+        <div class="card-header">
+          <button class="info-btn" onclick="openPopup()" title="معلومات إضافية">ⓘ</button>
+          <img src="../imgs/file_black.png" alt="أيقونة الخدمة" class="card-icon" />
+        </div>
+        
+        <!-- محتوى البطاقة -->
+        <h2 class="card-title">طريقة استخراج رقم العريضة</h2>
+        <p class="card-desc">
+          شرح كيفية معرفة رقم العريضة وتفاصيلها بعد الموافقة عليها من قبل النيابة العامة لتقديمها للمركز المختص حسب موافقة النيابة العامة
+        </p>
+        
+        <!-- زر الإجراء -->
+        <a href="shjpp-ar1.html" class="card-action">التقدم</a>
+        
+      </div>
+      
+    </section>
+
+  </main>
+
+  <!-- ============================== -->
+  <!--          النوافذ المنبثقة      -->
+  <!-- ============================== -->
+  
+  <!-- نافذة معلومات الخدمة -->
+  <div id="popup" class="popup">
+    <div class="popup-content">
+      <span class="close-btn" onclick="closePopup()" title="إغلاق">×</span>
+      <h3>شرح الخدمة</h3>
+      <p>خدمة تتيح معرفة رقم العريضة بعد موافقة النيابة العامة، ويتم استخدامه في المعاملات بالمركز المختص.</p>
+    </div>
+  </div>
+
+  <!-- نافذة تغيير اللغة -->
+  <div id="language-popup" class="language-popup">
+    <div class="language-popup-content">
+      
+      <span class="close-btn" onclick="toggleLanguagePopup()" title="إغلاق">×</span>
+      
+      <!-- رأس النافذة -->
+      <div class="language-header">🌐 اختر لغتك</div>
+      <p class="language-subtitle">يرجى اختيار اللغة المناسبة من القائمة أدناه</p>
+
+      <!-- خيارات اللغة -->
+      <a href="shjpp-ar.html" class="lang-option" title="البقاء في العربية">
+        <img src="../imgs/lan/AR.png" alt="العربية"> 
+        العربية
+      </a>
+      
+      <a href="shjpp-en.html" class="lang-option" title="Switch to English">
+        <img src="../imgs/lan/EN.png" alt="English"> 
+        English
+      </a>
+      
+    </div>
+  </div>
+
+  <!-- ============================== -->
+  <!--         جافاسكريبت            -->
+  <!-- ============================== -->
+  <script>
+    // فتح نافذة معلومات الخدمة
+    function openPopup() {
+      document.getElementById("popup").style.display = "flex";
+    }
+
+    // إغلاق نافذة معلومات الخدمة
+    function closePopup() {
+      document.getElementById("popup").style.display = "none";
+    }
+
+    // تبديل عرض نافذة اللغة
+    function toggleLanguagePopup() {
+      const popup = document.getElementById("language-popup");
+      const isVisible = popup.style.display === "flex";
+      
+      if (isVisible) {
+        popup.style.display = "none";
+      } else {
+        popup.style.display = "flex";
+        popup.style.justifyContent = "center";
+        popup.style.alignItems = "center";
+      }
+    }
+
+    // إغلاق النوافذ عند النقر خارجها
+    window.onclick = function(event) {
+      const servicePopup = document.getElementById("popup");
+      const languagePopup = document.getElementById("language-popup");
+      
+      // إغلاق نافذة معلومات الخدمة
+      if (event.target === servicePopup) {
+        servicePopup.style.display = "none";
+      }
+      
+      // إغلاق نافذة اللغة
+      if (event.target === languagePopup) {
+        languagePopup.style.display = "none";
+      }
+    };
+
+    // إغلاق النوافذ بمفتاح Escape
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape') {
+        closePopup();
+        document.getElementById("language-popup").style.display = "none";
+      }
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../styles.css" />
+  <title>موقع النيابة العامة - الشارقة</title>
+  <style>
+    /* إزالة أي خلفيات من الهيدر */
+    .header-container {
+      background: none !important;
+      background-color: transparent !important;
+    }
+    
+    .header-center {
+      background: none !important;
+      background-color: transparent !important;
+    }
+    
+    body.public-prosecution .header-container {
+      background: none !important;
+      background-color: transparent !important;
+    }
+    
+    body.public-prosecution .header-center {
+      background: none !important;
+      background-color: transparent !important;
+    }
+  </style>
+</head>
+
+<body class="public-prosecution">
+
+  <!-- ============================== -->
+  <!--            الهيدر             -->
+  <!-- ============================== -->
+  <header>
+    <div class="header-container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; background: none !important; background-color: transparent !important;">
+      
+      <!-- الشعار -->
+      <div class="header-right">
+        <img src="../imgs/shj_police.png" alt="شعار الشرطة" class="logo" />
+      </div>
+      
+      <!-- العنوان -->
+      <div class="header-center" style="flex: 1; text-align: center; background: none !important; background-color: transparent !important;">
+        <h1 class="site-title" style="background: none !important; background-color: transparent !important;">النيابة العامة - الشارقة</h1>
+      </div>
+      
+      <!-- أزرار التنقل -->
+      <div class="header-left" style="display: flex; align-items: center; gap: 10px;">
+        <a href="../home_page/index.html" class="lang-btn" title="الصفحة الرئيسية">
+          <img src="../imgs/home_black.png" alt="الرئيسية" style="width: 24px; height: 24px;">
+        </a>
+        <button onclick="toggleLanguagePopup()" class="lang-btn" title="اختر اللغة">
+          <img src="../imgs/world_black.png" alt="اختر اللغة" style="width: 24px; height: 24px;">
+        </button>
+      </div>
+      
+    </div>
+  </header>
+
+  <hr />
+
+  <!-- ============================== -->
+  <!--         المحتوى الرئيسي        -->
+  <!-- ============================== -->
+  <main class="page-container">
+    
+    <!-- زر الموقع الرئيسي -->
+    <a href="https://shjpp.ae" class="main-button" title="زيارة موقع النيابة العامة الرسمي" target="_blank" rel="noopener">
+      موقع النيابة العامة - الشارقة
+    </a>
+
+    <!-- قسم الصور التوضيحية -->
+    <section class="image-stack">
+      
+      <img src="../imgs/shjpp/shjpp-AR/ar1.jpg" alt="الخطوة الأولى - شرح استخراج رقم العريضة" loading="lazy" />
+      
+      <img src="../imgs/shjpp/shjpp-AR/ar2.jpg" alt="الخطوة الثانية - تعبئة البيانات المطلوبة" loading="lazy" />
+      
+      <img src="../imgs/shjpp/shjpp-AR/ar3.jpg" alt="الخطوة الثالثة - تأكيد البيانات" loading="lazy" />
+      
+      <img src="../imgs/shjpp/shjpp-AR/ar4.jpg" alt="الخطوة الرابعة - الحصول على رقم العريضة" loading="lazy" />
+      
+      <img src="../imgs/shjpp/shjpp-AR/ar5.jpg" alt="الخطوة الخامسة - إتمام العملية" loading="lazy" />
+      
+    </section>
+
+  </main>
+
+  <!-- ============================== -->
+  <!--        نافذة تغيير اللغة       -->
+  <!-- ============================== -->
+  <div id="language-popup" class="language-popup">
+    <div class="language-popup-content">
+      
+      <!-- زر الإغلاق -->
+      <span class="close-btn" onclick="toggleLanguagePopup()" title="إغلاق">×</span>
+      
+      <!-- رأس النافذة -->
+      <div class="language-header">🌐 اختر لغتك</div>
+      <p class="language-subtitle">يرجى اختيار اللغة المناسبة من القائمة أدناه</p>
+
+      <!-- خيارات اللغة -->
+      <a href="shjpp-ar1.html" class="lang-option" title="البقاء في العربية">
+        <img src="../imgs/lan/AR.png" alt="العربية"> 
+        العربية
+      </a>
+      
+      <a href="shjpp-en1.html" class="lang-option" title="Switch to English">
+        <img src="../imgs/lan/EN.png" alt="English"> 
+        English
+      </a>
+      
+    </div>
+  </div>
+
+  <!-- ============================== -->
+  <!--         جافاسكريبت            -->
+  <!-- ============================== -->
+  <script>
+    // تبديل عرض نافذة اللغة
+    function toggleLanguagePopup() {
+      const popup = document.getElementById("language-popup");
+      const isVisible = popup.style.display === "flex";
+      
+      if (isVisible) {
+        popup.style.display = "none";
+      } else {
+        popup.style.display = "flex";
+        popup.style.justifyContent = "center";
+        popup.style.alignItems = "center";
+      }
+    }
+
+    // إغلاق النافذة عند النقر خارجها
+    window.onclick = function(event) {
+      const popup = document.getElementById("language-popup");
+      if (event.target === popup) {
+        popup.style.display = "none";
+      }
+    };
+
+    // إغلاق النافذة بمفتاح Escape
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape') {
+        document.getElementById("language-popup").style.display = "none";
+      }
+    });
+
+    // تحسين تحميل الصور - Lazy Loading
+    document.addEventListener('DOMContentLoaded', function() {
+      const images = document.querySelectorAll('img[loading="lazy"]');
+      
+      // إضافة تأثير عند تحميل الصور
+      images.forEach(img => {
+        img.addEventListener('load', function() {
+          this.style.opacity = '1';
+        });
+      });
+    });
+
+    // إزالة أي خلفيات متبقية عند تحميل الصفحة
+    document.addEventListener('DOMContentLoaded', function() {
+      const headerContainer = document.querySelector('.header-container');
+      const headerCenter = document.querySelector('.header-center');
+      const siteTitle = document.querySelector('.site-title');
+      
+      if (headerContainer) {
+        headerContainer.style.background = 'none';
+        headerContainer.style.backgroundColor = 'transparent';
+      }
+      
+      if (headerCenter) {
+        headerCenter.style.background = 'none';
+        headerCenter.style.backgroundColor = 'transparent';
+      }
+      
+      if (siteTitle) {
+        siteTitle.style.background = 'none';
+        siteTitle.style.backgroundColor = 'transparent';
+      }
+    });
+  </script>
+
+</body>
+</html>

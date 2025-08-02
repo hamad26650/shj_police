@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>مركز شرطة البحيرة الشامل</title>
+  <link rel="stylesheet" href="../styles.css" />
+</head>
+
+<body>
+
+  <!-- ============================== -->
+  <!--            الهيدر             -->
+  <!-- ============================== -->
+  <header>
+    <div class="header-container responsive-header" style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap;">
+      
+      <!-- الشعار -->
+      <div class="header-right">
+        <img src="../imgs/shj_police.png" alt="شعار الشرطة" class="logo" />
+      </div>
+
+      <!-- العنوان -->
+      <div class="header-center" style="flex: 1; text-align: center;">
+        <h1 class="site-title" style="margin: 0;">مركز شرطة البحيرة الشامل</h1>
+      </div>
+
+      <!-- أزرار التنقل -->
+      <div class="header-left" style="display: flex; align-items: center; gap: 10px;">
+        <a href="../home_page/index.html" title="الرئيسية">
+          <img src="../imgs/home_white.png" alt="الرئيسية" style="width: 24px; height: 24px;">
+        </a>
+        <button onclick="toggleLanguagePopup()" class="lang-btn" title="اختر اللغة" style="background: none; border: none; padding: 0;">
+          <img src="../imgs/world_white.png" alt="اختر اللغة" style="width: 24px; height: 24px;">
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <hr />
+
+  <!-- ============================== -->
+  <!--         المحتوى الرئيسي        -->
+  <!-- ============================== -->
+  <main>
+    
+    <!-- قسم الصور الرئيسية -->
+    <section class="image-row">
+      
+      <!-- رابط الهوية الرقمية -->
+      <a href="../uaepass_page/uaepass-ar.html" class="image-link" title="الهوية الرقمية UAE PASS">
+        <img src="../imgs/img1.webp" alt="الهوية الرقمية" />
+      </a>
+      
+      <!-- رابط النيابة العامة -->
+      <a href="../shjpp_page/shjpp-ar.html" class="image-link" title="موقع النيابة العامة">
+        <img src="../imgs/img2.jpg" alt="موقع النيابة العامة" />
+      </a>
+      
+      <!-- رابط وزارة الداخلية -->
+      <a href="../moi_page/moi-ar.html" class="image-link" title="تطبيق وزارة الداخلية">
+        <img src="../imgs/img3.jpg" alt="تطبيق وزارة الداخلية" />
+      </a>
+      
+    </section>
+
+  </main>
+
+  <!-- ============================== -->
+  <!--        نافذة تغيير اللغة       -->
+  <!-- ============================== -->
+  <div id="language-popup" class="language-popup">
+    <div class="language-popup-content">
+      
+      <!-- زر الإغلاق -->
+      <span class="close-btn" onclick="toggleLanguagePopup()" title="إغلاق">×</span>
+      
+      <!-- رأس النافذة -->
+      <div class="language-header">🌐 اختر لغتك</div>
+      <p class="language-subtitle">يرجى اختيار اللغة المناسبة من القائمة أدناه</p>
+
+      <!-- خيارات اللغات -->
+      <a href="index.html" class="lang-option" title="التبديل للعربية">
+        <img src="../imgs/language/AR.png" alt="العربية"> 
+        العربية
+      </a>
+      
+      <a href="index_en.html" class="lang-option" title="Switch to English">
+        <img src="../imgs/language/EN.png" alt="English"> 
+        English
+      </a>
+      
+      <a href="index_ur.html" class="lang-option" title="اردو میں تبدیل کریں">
+        <img src="../imgs/language/IN.png" alt="اردو"> 
+        اردو
+      </a>
+      
+    </div>
+  </div>
+
+  <!-- ============================== -->
+  <!--         جافاسكريبت            -->
+  <!-- ============================== -->
+  <script>
+    // تبديل عرض نافذة اللغة
+    function toggleLanguagePopup() {
+      const popup = document.getElementById("language-popup");
+      const isVisible = popup.style.display === "flex";
+      
+      if (isVisible) {
+        popup.style.display = "none";
+      } else {
+        popup.style.display = "flex";
+        popup.style.justifyContent = "center";
+        popup.style.alignItems = "center";
+      }
+    }
+
+    // إغلاق النافذة عند النقر خارجها
+    window.onclick = function(event) {
+      const popup = document.getElementById("language-popup");
+      if (event.target === popup) {
+        popup.style.display = "none";
+      }
+    };
+
+    // إغلاق النافذة بمفتاح Escape
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape') {
+        document.getElementById("language-popup").style.display = "none";
+      }
+    });
+  </script>
+
+</body>
+</html>

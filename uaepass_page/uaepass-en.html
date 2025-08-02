@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Digital Identity - UAE PASS</title>
+  <link rel="stylesheet" href="../styles.css" />
+  <style>
+    /* Remove any background from header elements */
+    .header-container {
+      background: none !important;
+      background-color: transparent !important;
+    }
+    
+    .header-center {
+      background: none !important;
+      background-color: transparent !important;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ============================== -->
+  <!--            HEADER              -->
+  <!-- ============================== -->
+  <header>
+    <div class="header-container responsive-header" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; background: none !important; background-color: transparent !important;">
+      
+      <!-- Logo -->
+      <div class="header-left">
+        <img src="../imgs/shj_police.png" alt="Police Logo" class="logo" />
+      </div>
+
+      <!-- Title -->
+      <div class="header-center" style="flex: 1; text-align: center; background: none !important; background-color: transparent !important;">
+        <h1 class="site-title" style="margin: 0; color: white; background: none !important; background-color: transparent !important;">Digital Identity - UAE PASS</h1>
+      </div>
+
+      <!-- Navigation Buttons -->
+      <div class="header-right" style="display: flex; align-items: center; gap: 10px;">
+        <button onclick="toggleLanguagePopup()" class="lang-btn" title="Choose Language">
+          <img src="../imgs/world_white.png" alt="Choose Language" style="width: 24px; height: 24px;">
+        </button>
+        <a href="../home_page/index.html" class="lang-btn" title="Home Page">
+          <img src="../imgs/home_white.png" alt="Home" style="width: 24px; height: 24px;">
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+  <hr />
+
+  <!-- ============================== -->
+  <!--         MAIN CONTENT           -->
+  <!-- ============================== -->
+  <main>
+    
+    <!-- Educational Videos Section -->
+    <section class="video-section">
+      
+      <!-- Account Creation Video -->
+      <div class="video-block">
+        <h2 class="video-title">How to Create UAE PASS Digital Identity Account</h2>
+        <iframe
+          src="https://www.youtube.com/embed/DD_vhq-c32o"
+          title="How to Create UAE PASS Digital Identity Account"
+          allowfullscreen
+          loading="lazy">
+        </iframe>
+      </div>
+
+      <!-- Account Verification Video -->
+      <div class="video-block">
+        <h2 class="video-title">How to Verify UAE PASS Digital Identity Account</h2>
+        <iframe
+          src="https://www.youtube.com/embed/xJCZWOJGYR8"
+          title="How to Verify UAE PASS Digital Identity Account"
+          allowfullscreen
+          loading="lazy">
+        </iframe>
+      </div>
+      
+    </section>
+
+    <!-- App Download Section -->
+    <section class="app-download">
+      
+      <h3 class="app-download-title">Download UAE PASS Digital Identity App</h3>
+      
+      <div class="app-download-section">
+        
+        <!-- App Store Link -->
+        <a href="https://apps.apple.com/ae/app/uae-pass/id1377158818" target="_blank" title="Download from App Store" rel="noopener">
+          <img src="../imgs/app_store.png" alt="Download from App Store" class="store-badge" />
+        </a>
+        
+        <!-- Google Play Link -->
+        <a href="https://play.google.com/store/apps/details?id=ae.uaepass.mainapp" target="_blank" title="Download from Google Play" rel="noopener">
+          <img src="../imgs/google_play.png" alt="Download from Google Play" class="store-badge" />
+        </a>
+        
+      </div>
+      
+    </section>
+
+  </main>
+
+  <!-- ============================== -->
+  <!--      LANGUAGE POPUP            -->
+  <!-- ============================== -->
+  <div id="language-popup" class="language-popup">
+    <div class="language-popup-content">
+      
+      <!-- Close Button -->
+      <span class="close-btn" onclick="toggleLanguagePopup()" title="Close">×</span>
+      
+      <!-- Popup Header -->
+      <div class="language-header">🌐 Choose Your Language</div>
+      <p class="language-subtitle">Please select the appropriate language from the list below</p>
+
+      <!-- Language Options -->
+      <a href="uaepass-ar.html" class="lang-option" title="Switch to Arabic">
+        <img src="../imgs/language/AR.png" alt="Arabic"> 
+        العربية
+      </a>
+      
+      <a href="uaepass-en.html" class="lang-option" title="Switch to English">
+        <img src="../imgs/language/EN.png" alt="English"> 
+        English
+      </a>
+      
+    </div>
+  </div>
+
+  <!-- ============================== -->
+  <!--         JAVASCRIPT             -->
+  <!-- ============================== -->
+  <script>
+    // Toggle language popup display
+    function toggleLanguagePopup() {
+      const popup = document.getElementById("language-popup");
+      const isVisible = popup.style.display === "flex";
+      
+      if (isVisible) {
+        popup.style.display = "none";
+      } else {
+        popup.style.display = "flex";
+        popup.style.justifyContent = "center";
+        popup.style.alignItems = "center";
+      }
+    }
+
+    // Close popup when clicking outside
+    window.onclick = function(event) {
+      const popup = document.getElementById("language-popup");
+      if (event.target === popup) {
+        popup.style.display = "none";
+      }
+    };
+
+    // Close popup with Escape key
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape') {
+        document.getElementById("language-popup").style.display = "none";
+      }
+    });
+
+    // Improve video performance - stop playback when leaving page
+    window.addEventListener('beforeunload', function() {
+      const iframes = document.querySelectorAll('iframe');
+      iframes.forEach(iframe => {
+        iframe.src = '';
+      });
+    });
+
+    // Remove any remaining backgrounds when page loads
+    document.addEventListener('DOMContentLoaded', function() {
+      const headerContainer = document.querySelector('.header-container');
+      const headerCenter = document.querySelector('.header-center');
+      const siteTitle = document.querySelector('.site-title');
+      
+      if (headerContainer) {
+        headerContainer.style.background = 'none';
+        headerContainer.style.backgroundColor = 'transparent';
+      }
+      
+      if (headerCenter) {
+        headerCenter.style.background = 'none';
+        headerCenter.style.backgroundColor = 'transparent';
+      }
+      
+      if (siteTitle) {
+        siteTitle.style.background = 'none';
+        siteTitle.style.backgroundColor = 'transparent';
+      }
+    });
+  </script>
+
+</body>
+</html>

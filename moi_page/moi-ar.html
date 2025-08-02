@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../styles.css" />
+  <title>تطبيق وزارة الداخلية - MOI</title>
+</head>
+
+<body class="moi-page">
+
+  <!-- ============================== -->
+  <!--            الهيدر             -->
+  <!-- ============================== -->
+  <header>
+    <div class="header-container">
+      
+      <!-- الشعار -->
+      <div class="right">
+        <img src="../imgs/shj_police.png" alt="شعار الشرطة" class="logo" />
+      </div>
+      
+      <!-- العنوان -->
+      <div class="center">
+        <h1 class="site-title">تطبيق وزارة الداخلية - MOI</h1>
+      </div>
+      
+      <!-- أزرار التنقل -->
+      <div class="left">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <a href="../home_page/index.html" class="plain-link" title="الصفحة الرئيسية">
+            <img src="../imgs/home_white.png" alt="الرئيسية" style="width: 24px; height: 24px;">
+          </a>
+          <a href="#" onclick="toggleLanguagePopup()" class="plain-link" title="اختر اللغة">
+            <img src="../imgs/world_white.png" alt="اختر اللغة" style="width: 24px; height: 24px;">
+          </a>
+        </div>
+      </div>
+      
+    </div>
+  </header>
+
+  <hr />
+
+  <!-- ============================== -->
+  <!--         المحتوى الرئيسي        -->
+  <!-- ============================== -->
+  <main>
+    
+    <!-- قسم بطاقات الخدمات -->
+    <section class="service-cards">
+      
+      <div class="service-card">
+        
+        <!-- رأس البطاقة -->
+        <div class="card-header">
+          <button class="info-btn" onclick="openPopup()" title="معلومات إضافية">ⓘ</button>
+          <img src="../imgs/file_white.png" alt="أيقونة الخدمة" class="card-icon" />
+        </div>
+        
+        <!-- محتوى البطاقة -->
+        <h2 class="card-title moi-title">طريقة تقديم البلاغات الجنائية</h2>
+        <p class="card-desc">
+          شرح خطوات تقديم البلاغات الجنائية باستخدام تطبيق وزارة الداخلية بسهولة وسرعة.
+        </p>
+        
+        <!-- زر الإجراء -->
+        <a href="moi-criminal_case-ar.html" class="card-action">التقدم</a>
+        
+      </div>
+      
+    </section>
+
+    <!-- قسم تحميل التطبيق -->
+    <section class="app-download">
+      
+      <h3 class="app-download-title">لتحميل تطبيق وزراة الدخلية - MOI UAE</h3>
+      
+      <div class="app-download-section">
+        
+        <!-- رابط App Store -->
+        <a href="https://apps.apple.com/ae/app/moi-uae/id768665731" target="_blank" title="تحميل من App Store">
+          <img src="../imgs/app_store.png" alt="App Store" class="store-badge">
+        </a>
+        
+        <!-- رابط Google Play -->
+        <a href="https://play.google.com/store/apps/details?id=com.uaemoi.smartservices" target="_blank" title="تحميل من Google Play">
+          <img src="../imgs/google_play.png" alt="Google Play" class="store-badge" />
+        </a>
+        
+      </div>
+      
+    </section>
+
+  </main>
+
+  <!-- ============================== -->
+  <!--          النوافذ المنبثقة      -->
+  <!-- ============================== -->
+  
+  <!-- نافذة معلومات الخدمة -->
+  <div id="popup" class="popup">
+    <div class="popup-content">
+      <span class="close-btn" onclick="closePopup()" title="إغلاق">×</span>
+      <h3>شرح الخدمة</h3>
+      <p>خدمة تتيح للمستخدم تقديم البلاغات الجنائية إلكترونيًا من خلال تطبيق وزارة الداخلية.</p>
+    </div>
+  </div>
+
+  <!-- نافذة تغيير اللغة -->
+  <div id="language-popup" class="language-popup">
+    <div class="language-popup-content">
+      
+      <span class="close-btn" onclick="toggleLanguagePopup()" title="إغلاق">×</span>
+      
+      <!-- رأس النافذة -->
+      <div class="language-header">🌐 اختر لغتك</div>
+      <p class="language-subtitle">يرجى اختيار اللغة المناسبة من القائمة أدناه</p>
+
+      <!-- خيارات اللغة -->
+      <a href="moi-ar.html" class="lang-option" title="التبديل للعربية">
+        <img src="../imgs/language/AR.png" alt="العربية"> 
+        العربية
+      </a>
+      
+      <a href="moi-en.html" class="lang-option" title="Switch to English">
+        <img src="../imgs/language/EN.png" alt="English"> 
+        English
+      </a>
+      
+    </div>
+  </div>
+
+  <!-- ============================== -->
+  <!--         جافاسكريبت            -->
+  <!-- ============================== -->
+  <script>
+    // فتح نافذة معلومات الخدمة
+    function openPopup() {
+      document.getElementById("popup").style.display = "flex";
+    }
+
+    // إغلاق نافذة معلومات الخدمة
+    function closePopup() {
+      document.getElementById("popup").style.display = "none";
+    }
+
+    // تبديل عرض نافذة اللغة
+    function toggleLanguagePopup() {
+      const popup = document.getElementById("language-popup");
+      const isVisible = popup.style.display === "flex";
+      
+      if (isVisible) {
+        popup.style.display = "none";
+      } else {
+        popup.style.display = "flex";
+        popup.style.justifyContent = "center";
+        popup.style.alignItems = "center";
+      }
+    }
+
+    // إغلاق النوافذ عند النقر خارجها
+    window.onclick = function(event) {
+      const servicePopup = document.getElementById("popup");
+      const languagePopup = document.getElementById("language-popup");
+      
+      // إغلاق نافذة معلومات الخدمة
+      if (event.target === servicePopup) {
+        servicePopup.style.display = "none";
+      }
+      
+      // إغلاق نافذة اللغة
+      if (event.target === languagePopup) {
+        languagePopup.style.display = "none";
+      }
+    };
+
+    // إغلاق النوافذ بمفتاح Escape
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape') {
+        closePopup();
+        document.getElementById("language-popup").style.display = "none";
+      }
+    });
+  </script>
+
+</body>
+</html>
