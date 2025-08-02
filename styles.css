@@ -653,7 +653,7 @@ header .lang-btn,
 /*    صفحة وزارة الداخلية - إعدادات الكمبيوتر  */
 /* ========================================= */
 body.moi-page {
-  background-image: url('../imgs/moi_back.png');
+  background-image: url('https://hamad26650.github.io/shj_police/imgs/moi_back.png');
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
