@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>تطبيق وزارة الداخلية - MOI</title>
+  <link rel="stylesheet" href="../styles.css" />
+  <style>
+    /* تحسينات إضافية لصفحة وزارة الداخلية للهواتف - مصغرة أكثر */
+    @media (max-width: 768px) {
+      .header-container {
+        padding: 0.5rem 0.2rem;
+      }
+      
+      .site-title {
+        font-size: 1rem;
+        line-height: 1.3;
+        padding: 0 0.5rem;
+      }
+      
+      .service-cards {
+        padding: 1.2rem 0.5rem;
+        gap: 1.5rem;
+      }
+      
+      .service-card {
+        padding: 1.5rem;
+        border-radius: 15px;
+      }
+      
+      .card-header {
+        gap: 0.8rem;
+        margin-bottom: 1.2rem;
+      }
+      
+      .info-btn {
+        width: 32px;
+        height: 32px;
+        font-size: 1rem;
+      }
+      
+      .card-icon {
+        width: 42px;
+        height: 42px;
+      }
+      
+      .card-title {
+        font-size: 1.1rem;
+        margin: 1rem 0;
+        line-height: 1.4;
+      }
+      
+      .card-desc {
+        font-size: 0.85rem;
+        margin-bottom: 1.2rem;
+        line-height: 1.5;
+      }
+      
+      .card-action {
+        padding: 10px 20px;
+        font-size: 0.85rem;
+        border-radius: 15px;
+      }
+      
+      .app-download {
+        margin: 1rem 0.5rem;
+        padding: 1.5rem 1rem;
+      }
+      
+      .app-download-title {
+        font-size: 1.1rem;
+        margin-bottom: 1.2rem;
+      }
+      
+      .app-download-section {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+      }
+      
+      .store-badge {
+        width: 150px;
+      }
+      
+      /* النافذة المنبثقة مصغرة للهواتف */
+      .popup-content {
+        width: 92%;
+        margin: 1rem 0.5rem;
+        max-height: 82vh;
+        border-radius: 12px;
+        font-size: 0.9rem;
+      }
+
+      .popup-header {
+        padding: 0.8rem;
+        border-radius: 12px 12px 0 0;
+        gap: 0.6rem;
+      }
+
+      .popup-header h3 {
+        font-size: 0.9rem;
+        line-height: 1.2;
+      }
+
+      .header-icon {
+        width: 26px;
+        height: 26px;
+        font-size: 14px;
+      }
+
+      .close-btn {
+        width: 26px;
+        height: 26px;
+        font-size: 18px;
+        position: absolute;
+        top: 8px;
+        left: 8px; /* في الزاوية اليسرى للهواتف */
+      }
+
+      .header-subtitle {
+        font-size: 0.75rem;
+        margin: 0.4rem 0.8rem 0 0.8rem;
+        padding-bottom: 0.6rem;
+        line-height: 1.3;
+      }
+
+      .popup-body {
+        padding: 1rem;
+      }
+
+      .info-row {
+        flex-direction: column;
+        gap: 0.6rem;
+        margin-bottom: 1.2rem;
+        padding-bottom: 0.8rem;
+      }
+
+      .info-item {
+        padding: 0.6rem;
+        border-radius: 8px;
+      }
+
+      .info-item h4 {
+        font-size: 0.7rem;
+        margin-bottom: 0.3rem;
+      }
+
+      .info-value {
+        font-size: 0.8rem;
+      }
+
+      .device-icon {
+        width: 14px;
+        height: 14px;
+      }
+
+      .free-badge {
+        padding: 0.1rem 0.4rem;
+        font-size: 0.65rem;
+      }
+
+      /* وصف الخدمة */
+      .service-description {
+        font-size: 0.8rem;
+        padding: 0.8rem;
+        margin-bottom: 1.2rem;
+        border-radius: 8px;
+        text-align: right;
+        line-height: 1.5;
+      }
+
+      /* المربعين الأول */
+      .first-sections-row {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        margin-bottom: 1.2rem;
+      }
+
+      .section-box,
+      .documents-section-full {
+        padding: 1rem;
+        border-radius: 10px;
+      }
+
+      .section-title {
+        font-size: 0.9rem;
+        gap: 0.5rem;
+        margin-bottom: 0.6rem;
+        padding-bottom: 0.3rem;
+      }
+
+      .section-title-icon {
+        font-size: 1rem;
+      }
+
+      .section-content {
+        font-size: 0.8rem;
+      }
+
+      .beneficiaries-list li {
+        padding: 0.5rem;
+        margin-bottom: 0.5rem;
+        border-radius: 6px;
+        font-size: 0.8rem;
+      }
+
+      .channel-item {
+        padding: 0.5rem;
+        border-radius: 6px;
+        font-size: 0.8rem;
+      }
+
+      .channel-icon {
+        width: 18px;
+        height: 18px;
+        font-size: 0.7rem;
+      }
+
+      .channel-text {
+        font-size: 0.8rem;
+      }
+
+      /* قوائم الوثائق */
+      .document-category {
+        border-radius: 8px;
+      }
+
+      .document-category-header {
+        padding: 0.5rem 0.6rem;
+        font-size: 0.8rem;
+      }
+
+      .document-category-content {
+        padding: 0.6rem;
+      }
+
+      .document-item {
+        padding: 0.4rem 0;
+      }
+
+      .document-item::before {
+        font-size: 0.8rem;
+      }
+
+      .document-text {
+        font-size: 0.75rem;
+      }
+
+      .document-title {
+        font-size: 0.75rem;
+        margin-bottom: 0.1rem;
+      }
+
+      .document-desc {
+        font-size: 0.7rem;
+      }
+
+      /* زر المتابعة */
+      .continue-btn {
+        padding: 10px 1.2rem;
+        font-size: 0.9rem;
+        border-radius: 18px;
+      }
+
+      /* نافذة اللغة */
+      .language-popup-content {
+        width: 90%;
+        padding: 1.2rem;
+        border-radius: 12px;
+        font-size: 0.9rem;
+      }
+
+      .language-header {
+        font-size: 1.1rem;
+        margin-bottom: 0.4rem;
+      }
+
+      .language-subtitle {
+        font-size: 0.8rem;
+        margin-bottom: 1rem;
+        line-height: 1.3;
+      }
+
+      .lang-option {
+        padding: 8px 10px;
+        margin-bottom: 6px;
+        border-radius: 8px;
+        font-size: 0.8rem;
+      }
+
+      .lang-option img {
+        width: 22px;
+        height: 22px;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .site-title {
+        font-size: 0.9rem;
+      }
+      
+      .card-title {
+        font-size: 1rem;
+      }
+      
+      .app-download-title {
+        font-size: 1rem;
+      }
+      
+      .store-badge {
+        width: 130px;
+      }
+      
+      /* النوافذ المنبثقة مصغرة جداً للهواتف الصغيرة */
+      .popup-content {
+        width: 95%;
+        margin: 0.5rem;
+        max-height: 78vh;
+        border-radius: 10px;
+        font-size: 0.85rem;
+      }
+      
+      .popup-header {
+        padding: 0.6rem;
+      }
+      
+      .popup-header h3 {
+        font-size: 0.85rem;
+      }
+      
+      .header-icon {
+        width: 24px;
+        height: 24px;
+        font-size: 12px;
+      }
+      
+      .close-btn {
+        width: 24px;
+        height: 24px;
+        font-size: 16px;
+        position: absolute;
+        top: 6px;
+        left: 6px; /* في الزاوية اليسرى للهواتف الصغيرة */
+      }
+      
+      .header-subtitle {
+        font-size: 0.7rem;
+        margin: 0.3rem 0.6rem 0 0.6rem;
+        padding-bottom: 0.5rem;
+      }
+      
+      .popup-body {
+        padding: 0.8rem;
+      }
+      
+      .service-description {
+        font-size: 0.75rem;
+        padding: 0.6rem;
+      }
+      
+      .section-title {
+        font-size: 0.85rem;
+      }
+      
+      .section-content {
+        font-size: 0.75rem;
+      }
+      
+      .continue-btn {
+        padding: 8px 1rem;
+        font-size: 0.85rem;
+      }
+      
+      .language-popup-content {
+        padding: 1rem;
+        width: 95%;
+      }
+      
+      .language-header {
+        font-size: 1rem;
+      }
+      
+      .language-subtitle {
+        font-size: 0.75rem;
+      }
+      
+      .lang-option {
+        padding: 6px 8px;
+        font-size: 0.75rem;
+      }
+      
+      .lang-option img {
+        width: 20px;
+        height: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body class="moi-page">
+
+  <!-- ============================== -->
+  <!--            الهيدر             -->
+  <!-- ============================== -->
+  <header>
+    <div class="header-container">
+      
+      <!-- الشعار -->
+      <div class="right">
+        <img src="../imgs/shj_police.png" alt="شعار الشرطة" class="logo" />
+      </div>
+      
+      <!-- العنوان -->
+      <div class="center">
+        <h1 class="site-title">تطبيق وزارة الداخلية - MOI</h1>
+      </div>
+      
+      <!-- أزرار التنقل -->
+      <div class="left">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <a href="../home_page/index.html" class="plain-link" title="الصفحة الرئيسية">
+            <img src="../imgs/home_black.png" alt="الرئيسية" style="width: 24px; height: 24px;">
+          </a>
+          <a href="#" onclick="toggleLanguagePopup()" class="plain-link" title="اختر اللغة">
+            <img src="../imgs/world_black.png" alt="اختر اللغة" style="width: 24px; height: 24px;">
+          </a>
+        </div>
+      </div>
+      
+    </div>
+  </header>
+
+  <hr />
+
+  <!-- ============================== -->
+  <!--         المحتوى الرئيسي        -->
+  <!-- ============================== -->
+  <main>
+    
+    <!-- قسم بطاقات الخدمات -->
+    <section class="service-cards">
+      
+      <div class="service-card">
+        
+        <!-- رأس البطاقة -->
+        <div class="card-header">
+          <button class="info-btn" onclick="openPopup()" title="معلومات إضافية">ⓘ</button>
+          <img src="../imgs/file_white.png" alt="أيقونة الخدمة" class="card-icon" />
+        </div>
+        
+        <!-- محتوى البطاقة -->
+        <h2 class="card-title moi-title">طريقة تقديم البلاغات الجنائية</h2>
+        <p class="card-desc">
+          شرح خطوات تقديم البلاغات الجنائية باستخدام تطبيق وزارة الداخلية بسهولة وسرعة.
+        </p>
+        
+        <!-- زر الإجراء -->
+        <a href="moi-criminal_case-ar.html" class="card-action">التقدم</a>
+        
+      </div>
+      
+    </section>
+
+    <!-- قسم تحميل التطبيق -->
+    <section class="app-download">
+      
+      <h3 class="app-download-title">لتحميل تطبيق وزراة الدخلية - MOI UAE</h3>
+      
+      <div class="app-download-section">
+        
+        <!-- رابط App Store -->
+        <a href="https://apps.apple.com/ae/app/moi-uae/id768665731" target="_blank" title="تحميل من App Store">
+          <img src="../imgs/app_store.png" alt="App Store" class="store-badge">
+        </a>
+        
+        <!-- رابط Google Play -->
+        <a href="https://play.google.com/store/apps/details?id=com.uaemoi.smartservices" target="_blank" title="تحميل من Google Play">
+          <img src="../imgs/google_play.png" alt="Google Play" class="store-badge" />
+        </a>
+        
+      </div>
+      
+    </section>
+
+  </main>
+
+  <!-- ============================== -->
+  <!--          النوافذ المنبثقة      -->
+  <!-- ============================== -->
+  
+  <!-- النافذة المنبثقة المحدثة لشرح الخدمة -->
+  <div id="popup" class="popup">
+    <div class="popup-content">
+      
+      <!-- الهيدر -->
+      <div class="popup-header">
+        <div class="header-icon">🚨</div>
+        <h3>شرح تقديم البلاغات الجنائية</h3>
+        <button class="close-btn" onclick="closePopup()">×</button>
+      </div>
+      
+      <div class="header-subtitle">
+        خدمة إلكترونية تتيح للمستخدمين تقديم البلاغات الجنائية بسهولة وأمان عبر تطبيق وزارة الداخلية
+      </div>
+
+      <!-- جسم النافذة -->
+      <div class="popup-body">
+        
+        <!-- المربعات الثلاثة العلوية -->
+        <div class="info-row">
+          
+          <!-- متاح على -->
+          <div class="info-item">
+            <h4>متاح على</h4>
+            <div class="info-value">
+              <svg class="device-icon" fill="currentColor" viewBox="0 0 20 20">
+                <rect x="3" y="4" width="14" height="10" rx="2" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                <line x1="3" y1="8" x2="17" y2="8" stroke="currentColor" stroke-width="1.5"/>
+              </svg>
+              <svg class="device-icon" fill="currentColor" viewBox="0 0 20 20">
+                <rect x="6" y="2" width="8" height="16" rx="2" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                <line x1="8" y1="15" x2="12" y2="15" stroke="currentColor" stroke-width="1.5"/>
+              </svg>
+            </div>
+          </div>
+
+          <!-- زمن إنجاز المعاملة -->
+          <div class="info-item">
+            <h4>زمن إنجاز المعاملة</h4>
+            <div class="info-value">يوم عمل</div>
+          </div>
+
+          <!-- رسوم -->
+          <div class="info-item">
+            <h4>رسوم</h4>
+            <div class="info-value">
+              <span class="free-badge">مجانية</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- وصف الخدمة -->
+        <div class="service-description">
+          خدمة إلكترونية متطورة تمكن المواطنين والمقيمين والزائرين من تقديم البلاغات الجنائية المختلفة بما في ذلك قضايا السب والقذف 
+          عبر تطبيق وزارة الداخلية أو مراكز الشرطة، مع ضمان السرية والمتابعة الفورية للبلاغات.
+        </div>
+
+        <!-- المربعان الأول: المستفيدون + قنوات تقديم الخدمة -->
+        <div class="first-sections-row">
+          
+          <!-- مربع المستفيدون -->
+          <div class="section-box">
+            <div class="section-title">
+              <span class="section-title-icon">👥</span>
+              المستفيدون
+            </div>
+            <div class="section-content">
+              <ul class="beneficiaries-list">
+                <li>المواطنون</li>
+                <li>المقيمون</li>
+                <li>الزائرون</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- مربع قنوات تقديم الخدمة -->
+          <div class="section-box">
+            <div class="section-title">
+              <span class="section-title-icon">📱</span>
+              قنوات تقديم الخدمة
+            </div>
+            <div class="section-content">
+              <div class="channels-list">
+                
+                <div class="channel-item">
+                  <div class="channel-icon">📱</div>
+                  <div class="channel-text">تطبيق وزارة الداخلية</div>
+                </div>
+
+                <div class="channel-item">
+                  <div class="channel-icon">🏢</div>
+                  <div class="channel-text">مراكز شرطة الشارقة</div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- مربع الوثائق المطلوبة (عرض كامل) -->
+        <div class="documents-section-full">
+          <div class="section-title">
+            <span class="section-title-icon">📄</span>
+            الوثائق المطلوبة
+          </div>
+          <div class="section-content">
+            <div class="documents-list">
+              
+              <!-- فئة السب والقذف -->
+              <div class="document-category">
+                <div class="document-category-header">
+                  🗣️ سب وقذف
+                </div>
+                <div class="document-category-content">
+                  
+                  <div class="document-item">
+                    <div class="document-text">
+                      <div class="document-title">صورة لبطاقة الهوية الإماراتية أو جواز سفر</div>
+                      <div class="document-desc">إثبات الهوية الشخصية للمبلغ</div>
+                    </div>
+                  </div>
+
+                  <div class="document-item">
+                    <div class="document-text">
+                      <div class="document-title">لقطة من شاشة المحادثة السب والقذف</div>
+                      <div class="document-desc">صورة واضحة من المحادثة أو المنشور المسيء</div>
+                    </div>
+                  </div>
+
+                  <div class="document-item">
+                    <div class="document-text">
+                      <div class="document-title">مترجمة قانونياً إلى اللغة العربية</div>
+                      <div class="document-desc">في حال كانت المحادثة بلغة أخرى غير العربية</div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- زر المتابعة -->
+      <div style="padding: 1rem 1.5rem;">
+        <button class="continue-btn" onclick="proceedToService()">المتابعة إلى الخدمة</button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- نافذة تغيير اللغة -->
+  <div id="language-popup" class="language-popup">
+    <div class="language-popup-content">
+      
+      <span class="close-btn" onclick="toggleLanguagePopup()" title="إغلاق">×</span>
+      
+      <!-- رأس النافذة -->
+      <div class="language-header">🌐 اختر لغتك</div>
+      <p class="language-subtitle">يرجى اختيار اللغة المناسبة من القائمة أدناه</p>
+
+      <!-- خيارات اللغة -->
+      <a href="moi-ar.html" class="lang-option" title="التبديل للعربية">
+        <img src="../imgs/language/AR.png" alt="العربية"> 
+        العربية
+      </a>
+      
+      <a href="moi-en.html" class="lang-option" title="Switch to English">
+        <img src="../imgs/language/EN.png" alt="English"> 
+        English
+      </a>
+      
+    </div>
+  </div>
+
+  <!-- ============================== -->
+  <!--         جافاسكريبت            -->
+  <!-- ============================== -->
+  <script>
+    // فتح نافذة معلومات الخدمة
+    function openPopup() {
+      document.getElementById("popup").style.display = "flex";
+    }
+
+    // إغلاق نافذة معلومات الخدمة
+    function closePopup() {
+      document.getElementById("popup").style.display = "none";
+    }
+
+    // تبديل عرض نافذة اللغة
+    function toggleLanguagePopup() {
+      const popup = document.getElementById("language-popup");
+      const isVisible = popup.style.display === "flex";
+      
+      if (isVisible) {
+        popup.style.display = "none";
+      } else {
+        popup.style.display = "flex";
+        popup.style.justifyContent = "center";
+        popup.style.alignItems = "center";
+      }
+    }
+
+    // المتابعة إلى الخدمة
+    function proceedToService() {
+      alert('تم النقر على زر المتابعة!\nسيتم توجيهك إلى تطبيق وزارة الداخلية...');
+      // يمكنك إضافة الرابط الحقيقي هنا
+      closePopup();
+    }
+
+    // إغلاق النوافذ عند النقر خارجها
+    window.onclick = function(event) {
+      const servicePopup = document.getElementById("popup");
+      const languagePopup = document.getElementById("language-popup");
+      
+      // إغلاق نافذة معلومات الخدمة
+      if (event.target === servicePopup) {
+        servicePopup.style.display = "none";
+      }
+      
+      // إغلاق نافذة اللغة
+      if (event.target === languagePopup) {
+        languagePopup.style.display = "none";
+      }
+    };
+
+    // إغلاق النوافذ بمفتاح Escape
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape') {
+        closePopup();
+        document.getElementById("language-popup").style.display = "none";
+      }
+    });
+
+    // تحسينات إضافية للهواتف
+    document.addEventListener('DOMContentLoaded', function() {
+      // تحسين الأداء للهواتف
+      if (window.innerWidth <= 768) {
+        // تحسين النوافذ المنبثقة للهواتف
+        const popup = document.getElementById("popup");
+        if (popup) {
+          popup.style.padding = "0.5rem";
+        }
+        
+        // تحسين التمرير للهواتف
+        document.body.style.overscrollBehavior = "contain";
+      }
+      
+      // تحسين تجربة اللمس للهواتف
+      const buttons = document.querySelectorAll('button, .card-action, .lang-option, .store-badge');
+      buttons.forEach(button => {
+        button.addEventListener('touchstart', function() {
+          this.style.transform = 'scale(0.98)';
+        });
+        
+        button.addEventListener('touchend', function() {
+          setTimeout(() => {
+            this.style.transform = '';
+          }, 150);
+        });
+      });
+      
+      // تحسين روابط التحميل للهواتف
+      const storeLinks = document.querySelectorAll('.store-badge');
+      storeLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+          // تأخير بسيط لتحسين تجربة المستخدم على الهواتف
+          e.preventDefault();
+          setTimeout(() => {
+            window.open(this.parentElement.href, '_blank');
+          }, 100);
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>

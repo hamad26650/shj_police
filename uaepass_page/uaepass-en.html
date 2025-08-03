@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Digital Identity - UAE PASS</title>
+  <link rel="stylesheet" href="../styles.css" />
+  <style>
+    /* Remove any background from header elements */
+    .header-container {
+      background: none !important;
+      background-color: transparent !important;
+    }
+    
+    .header-center {
+      background: none !important;
+      background-color: transparent !important;
+    }
+
+    /* تحسينات إضافية لصفحة الهوية الرقمية للهواتف */
+    @media (max-width: 768px) {
+      .header-container {
+        padding: 0.5rem 0.2rem;
+      }
+      
+      .site-title {
+        font-size: 0.95rem;
+        line-height: 1.3;
+        padding: 0 0.5rem;
+      }
+      
+      .video-section {
+        padding: 1.2rem 0.5rem;
+        gap: 1.8rem;
+      }
+      
+      .video-block {
+        padding: 1.2rem;
+        border-radius: 12px;
+      }
+      
+      .video-title {
+        font-size: 1rem;
+        line-height: 1.4;
+        margin-bottom: 0.8rem;
+      }
+      
+      .video-block iframe {
+        min-height: 180px;
+        border-radius: 8px;
+      }
+      
+      .app-download {
+        margin: 1rem 0.5rem;
+        padding: 1.5rem 1rem;
+      }
+      
+      .app-download-title {
+        font-size: 1.1rem;
+        margin-bottom: 1.2rem;
+      }
+      
+      .app-download-section {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+      }
+      
+      .store-badge {
+        width: 150px;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .site-title {
+        font-size: 0.85rem;
+      }
+      
+      .video-title {
+        font-size: 0.9rem;
+      }
+      
+      .video-block iframe {
+        min-height: 160px;
+      }
+      
+      .app-download-title {
+        font-size: 1rem;
+      }
+      
+      .store-badge {
+        width: 130px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ============================== -->
+  <!--            HEADER              -->
+  <!-- ============================== -->
+  <header>
+    <div class="header-container responsive-header">
+      
+      <!-- Logo -->
+      <div class="header-left">
+        <img src="../imgs/shj_police.png" alt="Police Logo" class="logo" />
+      </div>
+
+      <!-- Title -->
+      <div class="header-center">
+        <h1 class="site-title">Digital Identity - UAE PASS</h1>
+      </div>
+
+      <!-- Navigation Buttons -->
+      <div class="header-right">
+        <button onclick="toggleLanguagePopup()" class="lang-btn" title="Choose Language">
+          <img src="../imgs/world_black.png" alt="Choose Language" style="width: 24px; height: 24px;">
+        </button>
+        <a href="../home_page/index.html" class="lang-btn" title="Home Page">
+          <img src="../imgs/home_black.png" alt="Home" style="width: 24px; height: 24px;">
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+  <hr />
+
+  <!-- ============================== -->
+  <!--         MAIN CONTENT           -->
+  <!-- ============================== -->
+  <main>
+    
+    <!-- Educational Videos Section -->
+    <section class="video-section">
+      
+      <!-- Account Creation Video -->
+      <div class="video-block">
+        <h2 class="video-title">How to Create UAE PASS Digital Identity Account</h2>
+        <iframe
+          src="https://www.youtube.com/embed/DD_vhq-c32o"
+          title="How to Create UAE PASS Digital Identity Account"
+          allowfullscreen
+          loading="lazy">
+        </iframe>
+      </div>
+
+      <!-- Account Verification Video -->
+      <div class="video-block">
+        <h2 class="video-title">How to Verify UAE PASS Digital Identity Account</h2>
+        <iframe
+          src="https://www.youtube.com/embed/xJCZWOJGYR8"
+          title="How to Verify UAE PASS Digital Identity Account"
+          allowfullscreen
+          loading="lazy">
+        </iframe>
+      </div>
+      
+    </section>
+
+    <!-- App Download Section -->
+    <section class="app-download">
+      
+      <h3 class="app-download-title">Download UAE PASS Digital Identity App</h3>
+      
+      <div class="app-download-section">
+        
+        <!-- App Store Link -->
+        <a href="https://apps.apple.com/ae/app/uae-pass/id1377158818" target="_blank" title="Download from App Store" rel="noopener">
+          <img src="../imgs/app_store.png" alt="Download from App Store" class="store-badge" />
+        </a>
+        
+        <!-- Google Play Link -->
+        <a href="https://play.google.com/store/apps/details?id=ae.uaepass.mainapp" target="_blank" title="Download from Google Play" rel="noopener">
+          <img src="../imgs/google_play.png" alt="Download from Google Play" class="store-badge" />
+        </a>
+        
+      </div>
+      
+    </section>
+
+  </main>
+
+  <!-- ============================== -->
+  <!--      LANGUAGE POPUP            -->
+  <!-- ============================== -->
+  <div id="language-popup" class="language-popup">
+    <div class="language-popup-content">
+      
+      <!-- Close Button -->
+      <span class="close-btn" onclick="toggleLanguagePopup()" title="Close">×</span>
+      
+      <!-- Popup Header -->
+      <div class="language-header">🌐 Choose Your Language</div>
+      <p class="language-subtitle">Please select the appropriate language from the list below</p>
+
+      <!-- Language Options -->
+      <a href="uaepass-ar.html" class="lang-option" title="Switch to Arabic">
+        <img src="../imgs/language/AR.png" alt="Arabic"> 
+        العربية
+      </a>
+      
+      <a href="uaepass-en.html" class="lang-option" title="Switch to English">
+        <img src="../imgs/language/EN.png" alt="English"> 
+        English
+      </a>
+      
+    </div>
+  </div>
+
+  <!-- ============================== -->
+  <!--         JAVASCRIPT             -->
+  <!-- ============================== -->
+  <script>
+    // Toggle language popup display
+    function toggleLanguagePopup() {
+      const popup = document.getElementById("language-popup");
+      const isVisible = popup.style.display === "flex";
+      
+      if (isVisible) {
+        popup.style.display = "none";
+      } else {
+        popup.style.display = "flex";
+        popup.style.justifyContent = "center";
+        popup.style.alignItems = "center";
+      }
+    }
+
+    // Close popup when clicking outside
+    window.onclick = function(event) {
+      const popup = document.getElementById("language-popup");
+      if (event.target === popup) {
+        popup.style.display = "none";
+      }
+    };
+
+    // Close popup with Escape key
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape') {
+        document.getElementById("language-popup").style.display = "none";
+      }
+    });
+
+    // Improve video performance - stop playback when leaving page
+    window.addEventListener('beforeunload', function() {
+      const iframes = document.querySelectorAll('iframe');
+      iframes.forEach(iframe => {
+        iframe.src = '';
+      });
+    });
+
+    // Remove any remaining backgrounds when page loads
+    document.addEventListener('DOMContentLoaded', function() {
+      const headerContainer = document.querySelector('.header-container');
+      const headerCenter = document.querySelector('.header-center');
+      const siteTitle = document.querySelector('.site-title');
+      
+      if (headerContainer) {
+        headerContainer.style.background = 'none';
+        headerContainer.style.backgroundColor = 'transparent';
+      }
+      
+      if (headerCenter) {
+        headerCenter.style.background = 'none';
+        headerCenter.style.backgroundColor = 'transparent';
+      }
+      
+      if (siteTitle) {
+        siteTitle.style.background = 'none';
+        siteTitle.style.backgroundColor = 'transparent';
+      }
+
+      // Mobile optimizations
+      if (window.innerWidth <= 768) {
+        const iframes = document.querySelectorAll('iframe');
+        iframes.forEach(iframe => {
+          // Add parameters for better mobile performance
+          const src = iframe.src;
+          if (src.includes('youtube.com')) {
+            iframe.src = src + '&playsinline=1&controls=1&showinfo=0&rel=0';
+          }
+        });
+      }
+      
+      // Improve store links for mobile
+      const storeLinks = document.querySelectorAll('.store-badge');
+      storeLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+          // Small delay for better mobile user experience
+          e.preventDefault();
+          setTimeout(() => {
+            window.open(this.parentElement.href, '_blank');
+          }, 100);
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>

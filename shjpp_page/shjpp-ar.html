@@ -1,0 +1,1430 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    /* ================================================================ */
+    /*                    التصميم المريح للعين - مرتب ومنسق               */
+    /* ================================================================ */
+
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Nunito:wght@300;400;500;600;700&display=swap');
+
+    /* ================================================================ */
+    /*                          متغيرات الألوان                        */
+    /* ================================================================ */
+    :root {
+      /* الألوان الأساسية */
+      --primary-color: #4a90a4;
+      --secondary-color: #5a6c7d;
+      --accent-color: #7fb3d3;
+      --soft-blue: #a8d0e6;
+      
+      /* الخلفيات */
+      --background-primary: #f8fafb;
+      --background-secondary: #ffffff;
+      --background-soft: #f5f7f9;
+      
+      /* الأسطح */
+      --surface-color: #ffffff;
+      --surface-elevated: #fdfdfd;
+      --surface-subtle: #f9fafb;
+      
+      /* النصوص */
+      --text-primary: #2c3e50;
+      --text-secondary: #5a6c7d;
+      --text-subtle: #8fa7b3;
+      --text-light: #b8c5d1;
+      
+      /* الحدود */
+      --border-color: #e8ecef;
+      --border-soft: #f0f3f6;
+      
+      /* الظلال */
+      --shadow-soft: rgba(74, 144, 164, 0.08);
+      --shadow-medium: rgba(74, 144, 164, 0.12);
+      --shadow-elevated: rgba(74, 144, 164, 0.16);
+      
+      /* التدرجات */
+      --gradient-soft: linear-gradient(135deg, var(--background-primary), var(--background-soft));
+      --gradient-surface: linear-gradient(135deg, var(--surface-color), var(--surface-elevated));
+      --gradient-accent: linear-gradient(135deg, var(--soft-blue), var(--accent-color));
+    }
+
+    /* ================================================================ */
+    /*                          الإعدادات العامة                        */
+    /* ================================================================ */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+      font-family: "Inter", sans-serif;
+    }
+
+    /* ================================================================ */
+    /*                          جسم الصفحة                            */
+    /* ================================================================ */
+    body {
+      background: var(--gradient-soft);
+      color: var(--text-primary);
+      line-height: 1.65;
+      font-size: 15px;
+      min-height: 100vh;
+      font-weight: 400;
+      letter-spacing: 0.01em;
+    }
+
+    /* خلفية ناعمة */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(circle at 25% 25%, rgba(168, 208, 230, 0.03) 0%, transparent 50%),
+        radial-gradient(circle at 75% 75%, rgba(127, 179, 211, 0.05) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    /* خط فاصل */
+    hr {
+      border: none;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border-color), transparent);
+      margin: 1.5rem 0;
+      opacity: 0.7;
+    }
+
+    /* الروابط */
+    .plain-link {
+      text-decoration: none;
+      color: var(--primary-color);
+      font-size: 0.95rem;
+      transition: all 0.25s ease;
+      font-weight: 450;
+    }
+
+    .plain-link:hover {
+      color: var(--secondary-color);
+    }
+
+    /* ================================================================ */
+    /*                             الهيدر                              */
+    /* ================================================================ */
+    header {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(20px);
+      color: var(--text-primary);
+      padding: 1.25rem 2rem;
+      box-shadow: 0 2px 20px var(--shadow-soft);
+      border-bottom: 1px solid var(--border-soft);
+      position: relative;
+    }
+
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    /* الشعار */
+    .logo {
+      width: 48px;
+      height: 48px;
+      object-fit: contain;
+      filter: drop-shadow(0 2px 8px var(--shadow-soft));
+      transition: all 0.3s ease;
+      background: var(--surface-color);
+      border-radius: 6px;
+      padding: 3px;
+      border: 1px solid var(--border-soft);
+    }
+
+    .logo:hover {
+      transform: scale(1.05);
+      filter: drop-shadow(0 4px 12px var(--shadow-medium));
+    }
+
+    /* عنوان الموقع */
+    .site-title {
+      font-size: 1.35rem;
+      color: var(--text-primary);
+      margin: 0;
+      font-weight: 500;
+      font-family: "Nunito", sans-serif;
+      letter-spacing: -0.01em;
+    }
+
+    /* زر اللغة */
+    .lang-btn {
+      background: var(--surface-color) !important;
+      color: var(--primary-color) !important;
+      border: 1px solid var(--border-color) !important;
+      padding: 0.6rem 1.1rem;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      box-shadow: 0 2px 8px var(--shadow-soft) !important;
+      font-weight: 450;
+    }
+
+    .lang-btn:hover {
+      background: var(--background-soft) !important;
+      border-color: var(--accent-color) !important;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px var(--shadow-medium) !important;
+    }
+
+    /* ================================================================ */
+    /*                          بطاقات الخدمات                         */
+    /* ================================================================ */
+    .service-cards {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 2.25rem;
+      padding: 2.5rem 1rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .service-card {
+      background: var(--surface-color);
+      border-radius: 18px;
+      padding: 2.25rem;
+      box-shadow: 0 8px 28px var(--shadow-soft);
+      width: 100%;
+      max-width: 380px;
+      position: relative;
+      text-align: center;
+      border: 1px solid var(--border-soft);
+      transition: all 0.4s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 36px var(--shadow-medium);
+      border-color: var(--border-color);
+    }
+
+    /* =============================================== */
+    /*    الحل الأساسي: إصلاح رأس البطاقة             */
+    /* =============================================== */
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.75rem;
+      gap: 1rem; /* مسافة مهمة بين العناصر */
+    }
+
+    .info-btn {
+      background: var(--background-soft);
+      border: 1px solid var(--border-color);
+      font-size: 1.2rem;
+      color: var(--primary-color);
+      cursor: pointer;
+      border-radius: 50%;
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.25s ease;
+      flex-shrink: 0; /* منع تقليص الزر */
+    }
+
+    .info-btn:hover {
+      background: var(--accent-color);
+      color: var(--surface-color);
+      transform: scale(1.05);
+      box-shadow: 0 3px 10px var(--shadow-soft);
+    }
+
+    .card-icon {
+      width: 50px;
+      height: 50px;
+      filter: drop-shadow(0 2px 6px var(--shadow-soft));
+      flex-shrink: 0; /* منع تقليص الأيقونة */
+    }
+
+    /* محتوى البطاقة */
+    .card-title {
+      font-size: 1.3rem;
+      font-weight: 500;
+      margin: 1.25rem 0;
+      color: var(--primary-color);
+      font-family: "Nunito", sans-serif;
+      letter-spacing: -0.01em;
+    }
+
+    .card-desc {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      margin-bottom: 1.75rem;
+      line-height: 1.6;
+    }
+
+    .card-action {
+      display: inline-block;
+      background: var(--gradient-accent);
+      color: var(--surface-color);
+      padding: 12px 28px;
+      border-radius: 20px;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: all 0.25s ease;
+      box-shadow: 0 4px 14px var(--shadow-soft);
+    }
+
+    .card-action:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px var(--shadow-medium);
+    }
+
+    /* =============================================== */
+    /*      الحل الأساسي: إصلاح النافذة المنبثقة       */
+    /* =============================================== */
+
+    /* النافذة المنبثقة */
+    .popup {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background-color: rgba(44, 62, 80, 0.6);
+      z-index: 9999;
+      justify-content: center;
+      align-items: center;
+      padding: 1rem;
+      backdrop-filter: blur(8px);
+    }
+
+    .popup-content {
+      background: var(--surface-color);
+      border-radius: 20px;
+      max-width: 750px; /* زدت العرض للمربعين الجديدين */
+      width: 95%;
+      max-height: 90vh; /* زدت الارتفاع */
+      position: relative;
+      box-shadow: 0 25px 60px var(--shadow-elevated);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid var(--border-color);
+    }
+
+    /* هيدر النافذة - الإصلاح الأساسي */
+    .popup-header {
+      background: var(--surface-color);
+      padding: 1.2rem 1.5rem;
+      position: relative;
+      border-radius: 20px 20px 0 0;
+      display: flex;
+      align-items: center;
+      gap: 1rem; /* مسافة بين العناصر */
+      color: var(--text-primary);
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .header-icon {
+      width: 35px;
+      height: 35px;
+      background-color: var(--accent-color);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary-color);
+      font-size: 18px;
+      border: 1px solid var(--border-color);
+      flex-shrink: 0; /* منع تقليص الأيقونة */
+    }
+
+    .popup-header h3 {
+      color: var(--text-primary);
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin: 0;
+      flex: 1; /* يأخذ المساحة المتبقية */
+      text-align: center;
+      font-family: "Nunito", sans-serif;
+    }
+
+    .close-btn {
+      color: var(--text-secondary);
+      font-size: 22px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      transition: all 0.3s ease;
+      flex-shrink: 0; /* منع تقليص الزر */
+    }
+
+    .close-btn:hover {
+      background-color: var(--background-soft);
+      color: var(--primary-color);
+    }
+
+    .header-subtitle {
+      color: var(--text-secondary);
+      font-size: 0.85rem;
+      text-align: center;
+      margin: 0.8rem 1.5rem 0 1.5rem;
+      line-height: 1.4;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border-soft);
+    }
+
+    /* جسم النافذة */
+    .popup-body {
+      padding: 2rem;
+      overflow-y: auto;
+      flex: 1;
+      color: var(--text-primary);
+    }
+
+    /* صف المعلومات العلوي */
+    .info-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+      padding-bottom: 1.2rem;
+      border-bottom: 2px solid var(--border-color);
+      gap: 1.5rem;
+    }
+
+    .info-item {
+      text-align: center;
+      flex: 1;
+      background: var(--background-soft);
+      padding: 1rem;
+      border-radius: 12px;
+      border: 1px solid var(--border-soft);
+    }
+
+    .info-item h4 {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      margin: 0 0 0.5rem 0;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .info-value {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      font-size: 0.95rem;
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    .device-icon {
+      width: 18px;
+      height: 18px;
+      color: var(--primary-color);
+    }
+
+    .free-badge {
+      background: var(--gradient-accent);
+      color: var(--surface-color);
+      padding: 0.2rem 0.6rem;
+      border-radius: 15px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    /* وصف الخدمة */
+    .service-description {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      line-height: 1.7;
+      text-align: justify;
+      margin-bottom: 2rem;
+      background: var(--background-soft);
+      padding: 1.2rem;
+      border-radius: 12px;
+      border-left: 4px solid var(--primary-color);
+    }
+
+    /* ============================================== */
+    /*          المربعين الجديدين - التصميم           */
+    /* ============================================== */
+
+    /* صف المربعين الجديدين */
+    .new-sections-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr; /* عمودين متساويين */
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    /* تصميم كل مربع جديد */
+    .section-box {
+      background: var(--background-soft);
+      padding: 1.5rem;
+      border-radius: 15px;
+      border: 1px solid var(--border-soft);
+      transition: all 0.3s ease;
+    }
+
+    .section-box:hover {
+      border-color: var(--primary-color);
+      box-shadow: 0 4px 15px var(--shadow-soft);
+      transform: translateY(-2px);
+    }
+
+    /* عنوان كل مربع */
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      color: var(--primary-color);
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      font-family: "Nunito", sans-serif;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--border-color);
+    }
+
+    .section-title-icon {
+      font-size: 1.3rem;
+    }
+
+    /* محتوى المربعات */
+    .section-content {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    /* قائمة المستفيدين */
+    .beneficiaries-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .beneficiaries-list li {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      padding: 0.6rem 0;
+      border-bottom: 1px solid var(--border-soft);
+    }
+
+    .beneficiaries-list li:last-child {
+      border-bottom: none;
+    }
+
+    .beneficiaries-list li::before {
+      content: "👥";
+      font-size: 1.1rem;
+    }
+
+    .beneficiary-title {
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    /* قائمة منصات تقديم الخدمة */
+    .platforms-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .platform-item {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      padding: 0.8rem;
+      background: var(--surface-color);
+      border-radius: 10px;
+      border: 1px solid var(--border-color);
+      transition: all 0.3s ease;
+    }
+
+    .platform-item:hover {
+      border-color: var(--accent-color);
+      box-shadow: 0 2px 8px var(--shadow-soft);
+    }
+
+    .platform-icon {
+      width: 24px;
+      height: 24px;
+      background: var(--gradient-accent);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 0.9rem;
+    }
+
+    .platform-text {
+      flex: 1;
+    }
+
+    .platform-title {
+      font-weight: 600;
+      color: var(--text-primary);
+      font-size: 0.9rem;
+    }
+
+    .platform-desc {
+      font-size: 0.8rem;
+      color: var(--text-subtle);
+      margin-top: 0.2rem;
+    }
+
+    /* زر المتابعة */
+    .continue-btn {
+      background: var(--gradient-accent);
+      color: var(--surface-color);
+      border: none;
+      padding: 15px 2rem;
+      border-radius: 25px;
+      font-size: 1.05rem;
+      font-weight: 600;
+      cursor: pointer;
+      width: 100%;
+      transition: all 0.3s ease;
+      margin-top: 1rem;
+      box-shadow: 0 4px 15px var(--shadow-soft);
+    }
+
+    .continue-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px var(--shadow-medium);
+    }
+
+    /* نافذة اختيار اللغة */
+    .language-popup {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(44, 62, 80, 0.4);
+      z-index: 9999;
+      backdrop-filter: blur(8px);
+    }
+
+    .language-popup-content {
+      background: var(--surface-color);
+      padding: 2.25rem;
+      border-radius: 20px;
+      width: 90%;
+      max-width: 380px;
+      text-align: center;
+      box-shadow: 0 20px 50px var(--shadow-elevated);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border: 1px solid var(--border-color);
+    }
+
+    .language-header {
+      font-size: 1.4rem;
+      color: var(--primary-color);
+      margin-bottom: 0.75rem;
+      font-weight: 600;
+      font-family: "Nunito", sans-serif;
+    }
+
+    .language-subtitle {
+      font-size: 0.95rem;
+      margin-bottom: 1.75rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    .lang-option {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--text-primary);
+      background: var(--background-soft);
+      padding: 12px 16px;
+      margin-bottom: 12px;
+      border-radius: 12px;
+      transition: all 0.25s ease;
+      font-size: 0.95rem;
+      border: 1px solid var(--border-soft);
+      font-weight: 450;
+    }
+
+    .lang-option:hover {
+      background: var(--accent-color);
+      color: var(--surface-color);
+      transform: translateX(4px);
+      border-color: var(--accent-color);
+      box-shadow: 0 4px 12px var(--shadow-soft);
+    }
+
+    .lang-option img {
+      width: 28px;
+      height: 28px;
+      border-radius: 4px;
+      box-shadow: 0 1px 4px var(--shadow-soft);
+    }
+
+    /* تحسينات الهواتف مصغرة أكثر */
+    @media (max-width: 768px) {
+      /* الهيدر */
+      header {
+        padding: 0.8rem 1rem;
+      }
+      
+      .header-container {
+        padding: 0.3rem;
+        gap: 0.5rem;
+      }
+      
+      .site-title {
+        font-size: 1rem;
+        line-height: 1.3;
+      }
+      
+      .logo {
+        width: 38px;
+        height: 38px;
+      }
+      
+      .lang-btn {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.8rem;
+        border-radius: 15px;
+      }
+      
+      /* بطاقات الخدمات */
+      .service-cards {
+        gap: 1.5rem;
+        padding: 1.5rem 0.8rem;
+      }
+      
+      .service-card {
+        padding: 1.5rem;
+        border-radius: 15px;
+        max-width: 100%;
+      }
+      
+      .card-header {
+        gap: 0.8rem;
+        margin-bottom: 1.2rem;
+      }
+      
+      .info-btn {
+        width: 32px;
+        height: 32px;
+        font-size: 1rem;
+      }
+      
+      .card-icon {
+        width: 42px;
+        height: 42px;
+      }
+      
+      .card-title {
+        font-size: 1.1rem;
+        margin: 1rem 0;
+        line-height: 1.4;
+      }
+      
+      .card-desc {
+        font-size: 0.85rem;
+        margin-bottom: 1.2rem;
+        line-height: 1.5;
+      }
+      
+      .card-action {
+        padding: 10px 20px;
+        font-size: 0.85rem;
+        border-radius: 15px;
+      }
+      
+      /* النافذة المنبثقة مصغرة */
+      .popup-content {
+        width: 92%;
+        margin: 1rem 0.5rem;
+        max-height: 82vh;
+        border-radius: 12px;
+        font-size: 0.9rem;
+      }
+
+      .popup-header {
+        padding: 0.8rem;
+        border-radius: 12px 12px 0 0;
+        gap: 0.6rem;
+      }
+
+      .popup-header h3 {
+        font-size: 0.9rem;
+        line-height: 1.2;
+      }
+
+      .header-icon {
+        width: 26px;
+        height: 26px;
+        font-size: 14px;
+      }
+
+      .close-btn {
+        width: 26px;
+        height: 26px;
+        font-size: 18px;
+        position: absolute;
+        top: 8px;
+        left: 8px; /* في الزاوية اليسرى للهواتف */
+      }
+
+      .header-subtitle {
+        font-size: 0.75rem;
+        margin: 0.4rem 0.8rem 0 0.8rem;
+        padding-bottom: 0.6rem;
+        line-height: 1.3;
+      }
+
+      .popup-body {
+        padding: 1rem;
+      }
+
+      .info-row {
+        flex-direction: column;
+        gap: 0.6rem;
+        margin-bottom: 1.2rem;
+        padding-bottom: 0.8rem;
+      }
+
+      .info-item {
+        padding: 0.6rem;
+        border-radius: 8px;
+      }
+
+      .info-item h4 {
+        font-size: 0.7rem;
+        margin-bottom: 0.3rem;
+      }
+
+      .info-value {
+        font-size: 0.8rem;
+      }
+
+      .device-icon {
+        width: 14px;
+        height: 14px;
+      }
+
+      .free-badge {
+        padding: 0.1rem 0.4rem;
+        font-size: 0.65rem;
+      }
+
+      /* وصف الخدمة */
+      .service-description {
+        font-size: 0.8rem;
+        padding: 0.8rem;
+        margin-bottom: 1.2rem;
+        border-radius: 8px;
+        text-align: right;
+        line-height: 1.5;
+      }
+
+      /* المربعين الجديدين */
+      .new-sections-row {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        margin-bottom: 1.2rem;
+      }
+
+      .section-box {
+        padding: 1rem;
+        border-radius: 10px;
+      }
+
+      .section-title {
+        font-size: 0.9rem;
+        gap: 0.5rem;
+        margin-bottom: 0.6rem;
+        padding-bottom: 0.3rem;
+      }
+
+      .section-title-icon {
+        font-size: 1rem;
+      }
+
+      .section-content {
+        font-size: 0.8rem;
+      }
+
+      .beneficiaries-list li {
+        padding: 0.5rem 0;
+        font-size: 0.8rem;
+      }
+
+      .beneficiaries-list li::before {
+        font-size: 0.9rem;
+      }
+
+      .platform-item {
+        padding: 0.5rem;
+        border-radius: 6px;
+        font-size: 0.8rem;
+      }
+
+      .platform-icon {
+        width: 18px;
+        height: 18px;
+        font-size: 0.7rem;
+      }
+
+      .platform-title {
+        font-size: 0.8rem;
+      }
+
+      .platform-desc {
+        font-size: 0.7rem;
+      }
+
+      /* زر المتابعة */
+      .continue-btn {
+        padding: 10px 1.2rem;
+        font-size: 0.9rem;
+        border-radius: 18px;
+      }
+
+      /* نافذة اللغة */
+      .language-popup-content {
+        width: 90%;
+        padding: 1.2rem;
+        border-radius: 12px;
+        font-size: 0.9rem;
+      }
+
+      .language-header {
+        font-size: 1.1rem;
+        margin-bottom: 0.4rem;
+      }
+
+      .language-subtitle {
+        font-size: 0.8rem;
+        margin-bottom: 1rem;
+        line-height: 1.3;
+      }
+
+      .lang-option {
+        padding: 8px 10px;
+        margin-bottom: 6px;
+        border-radius: 8px;
+        font-size: 0.8rem;
+      }
+
+      .lang-option img {
+        width: 22px;
+        height: 22px;
+      }
+    }iciaries-list li {
+        padding: 0.6rem 0;
+      }
+
+      .beneficiaries-list li::before {
+        font-size: 1rem;
+      }
+
+      .platform-item {
+        padding: 0.6rem;
+        border-radius: 8px;
+      }
+
+      .platform-icon {
+        width: 20px;
+        height: 20px;
+        font-size: 0.8rem;
+      }
+
+      .platform-title {
+        font-size: 0.85rem;
+      }
+
+      .platform-desc {
+        font-size: 0.75rem;
+      }
+
+      /* زر المتابعة */
+      .continue-btn {
+        padding: 12px 1.5rem;
+        font-size: 0.95rem;
+        border-radius: 20px;
+      }
+
+      /* نافذة اللغة */
+      .language-popup-content {
+        width: 95%;
+        padding: 1.5rem;
+        border-radius: 15px;
+      }
+
+      .language-header {
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .language-subtitle {
+        font-size: 0.85rem;
+        margin-bottom: 1.2rem;
+        line-height: 1.4;
+      }
+
+      .lang-option {
+        padding: 10px 12px;
+        margin-bottom: 8px;
+        border-radius: 10px;
+        font-size: 0.85rem;
+      }
+
+      .lang-option img {
+        width: 24px;
+        height: 24px;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      /* النوافذ المنبثقة مصغرة جداً للهواتف الصغيرة */
+      .site-title {
+        font-size: 0.9rem;
+      }
+      
+      .logo {
+        width: 32px;
+        height: 32px;
+      }
+      
+      .lang-btn {
+        padding: 0.3rem 0.6rem;
+        font-size: 0.75rem;
+      }
+      
+      .card-title {
+        font-size: 1rem;
+      }
+      
+      .popup-content {
+        width: 95%;
+        margin: 0.5rem;
+        max-height: 78vh;
+        border-radius: 10px;
+        font-size: 0.85rem;
+      }
+      
+      .popup-header {
+        padding: 0.6rem;
+      }
+      
+      .popup-header h3 {
+        font-size: 0.85rem;
+      }
+      
+      .header-icon {
+        width: 24px;
+        height: 24px;
+        font-size: 12px;
+      }
+      
+      .close-btn {
+        width: 24px;
+        height: 24px;
+        font-size: 16px;
+        position: absolute;
+        top: 6px;
+        left: 6px; /* في الزاوية اليسرى للهواتف الصغيرة */
+      }
+      
+      .header-subtitle {
+        font-size: 0.7rem;
+        margin: 0.3rem 0.6rem 0 0.6rem;
+        padding-bottom: 0.5rem;
+      }
+      
+      .popup-body {
+        padding: 0.8rem;
+      }
+      
+      .service-description {
+        font-size: 0.75rem;
+        padding: 0.6rem;
+      }
+      
+      .section-title {
+        font-size: 0.85rem;
+      }
+      
+      .section-content {
+        font-size: 0.75rem;
+      }
+      
+      .continue-btn {
+        padding: 8px 1rem;
+        font-size: 0.85rem;
+      }
+      
+      .language-popup-content {
+        padding: 1rem;
+        width: 95%;
+      }
+      
+      .language-header {
+        font-size: 1rem;
+      }
+      
+      .language-subtitle {
+        font-size: 0.75rem;
+      }
+      
+      .lang-option {
+        padding: 6px 8px;
+        font-size: 0.75rem;
+      }
+      
+      .lang-option img {
+        width: 20px;
+        height: 20px;
+      }
+    }
+  </style>
+  <title>موقع النيابة العامة</title>
+</head>
+
+<body class="public-prosecution">
+  
+  <!-- ============================== -->
+  <!--            الهيدر             -->
+  <!-- ============================== -->
+  <header>
+    <div class="header-container responsive-header">
+      
+      <div class="header-right">
+        <img src="../imgs/shj_police.png" alt="شعار الشرطة" class="logo" />
+      </div>
+
+      <div class="header-center">
+        <h1 class="site-title">موقع النيابة العامة</h1>
+      </div>
+
+      <div class="header-left">
+        <a href="../home_page/index.html" class="plain-link" title="الصفحة الرئيسية">
+          <img src="../imgs/home_black.png" alt="الرئيسية" style="width: 24px; height: 24px;">
+        </a>
+        <button onclick="toggleLanguagePopup()" class="lang-btn" title="اختر اللغة">
+          <img src="../imgs/world_black.png" alt="اختر اللغة" style="width: 24px; height: 24px;">
+        </button>
+      </div>
+      
+    </div>
+  </header>
+
+  <hr />
+
+  <!-- ============================== -->
+  <!--         المحتوى الرئيسي        -->
+  <!-- ============================== -->
+  <main>
+    <section class="service-cards">
+      <div class="service-card">
+        
+        <!-- الإصلاح: ترتيب صحيح للعناصر مع مسافات مناسبة -->
+        <div class="card-header">
+          <button class="info-btn" onclick="openPopup()" title="معلومات الخدمة">ⓘ</button>
+          <img src="../imgs/file_black.png" alt="أيقونة الخدمة" class="card-icon" />
+        </div>
+        
+        <h2 class="card-title">طريقة استخراج رقم العريضة</h2>
+        <p class="card-desc">
+          شرح كيفية معرفة رقم العريضة وتفاصيلها بعد الموافقة عليها من قبل النيابة العامة لتقديمها للمركز المختص حسب موافقة النيابة العامة
+        </p>
+        
+        <a href="shjpp-ar1.html" class="card-action">التقدم</a>
+        
+      </div>
+    </section>
+  </main>
+
+  <!-- ============================== -->
+  <!--         النوافذ المنبثقة        -->
+  <!-- ============================== -->
+  
+  <!-- النافذة المنبثقة المحدثة لشرح الخدمة -->
+  <div id="popup" class="popup">
+    <div class="popup-content">
+      
+      <!-- الهيدر مع الترتيب المُصحح -->
+      <div class="popup-header">
+        <div class="header-icon">📄</div>
+        <h3>شرح استخراج رقم العريضة</h3>
+        <button class="close-btn" onclick="closePopup()">×</button>
+      </div>
+      
+      <div class="header-subtitle">
+        تتيح هذه الخدمة للمتعاملين معرفة رقم العريضة وتفاصيلها بعد الموافقة عليها من قبل النيابة العامة
+      </div>
+
+      <!-- الجسم الرئيسي -->
+      <div class="popup-body">
+        
+        <!-- صف المعلومات العلوي -->
+        <div class="info-row">
+          
+          <!-- متاح على -->
+          <div class="info-item">
+            <h4>متاح على</h4>
+            <div class="info-value">
+              <svg class="device-icon" fill="currentColor" viewBox="0 0 20 20">
+                <rect x="3" y="4" width="14" height="10" rx="2" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                <line x1="3" y1="8" x2="17" y2="8" stroke="currentColor" stroke-width="1.5"/>
+              </svg>
+              <svg class="device-icon" fill="currentColor" viewBox="0 0 20 20">
+                <rect x="6" y="2" width="8" height="16" rx="2" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                <line x1="8" y1="15" x2="12" y2="15" stroke="currentColor" stroke-width="1.5"/>
+              </svg>
+            </div>
+          </div>
+
+          <!-- زمن إنجاز المعاملة -->
+          <div class="info-item">
+            <h4>زمن إنجاز المعاملة</h4>
+            <div class="info-value">فوري</div>
+          </div>
+
+          <!-- رسوم -->
+          <div class="info-item">
+            <h4>رسوم</h4>
+            <div class="info-value">
+              <span class="free-badge">مجانية</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- وصف الخدمة -->
+        <div class="service-description">
+          خدمة إلكترونية تمكن المتعاملين من الاستعلام عن رقم العريضة المقدمة إلى النيابة العامة ومعرفة حالة الطلب والقرار الصادر بشأنها، 
+          مما يسهل على المواطنين متابعة إجراءاتهم القانونية بكل شفافية ويسر.
+        </div>
+
+        <!-- ============================================== -->
+        <!--               المربعين الجديدين                -->
+        <!-- ============================================== -->
+        
+        <div class="new-sections-row">
+          
+          <!-- مربع المستفيدون -->
+          <div class="section-box">
+            <div class="section-title">
+              <span class="section-title-icon">👥</span>
+              المستفيدون
+            </div>
+            <div class="section-content">
+              <ul class="beneficiaries-list">
+                <li>
+                  <span class="beneficiary-title">الأفراد:</span>
+                  المواطنون والمقيمون
+                </li>
+                <li>
+                  <span class="beneficiary-title">المحامون:</span>
+                  ممثلو الأطراف القانونية
+                </li>
+                <li>
+                  <span class="beneficiary-title">الشركات:</span>
+                  الكيانات القانونية المعنية
+                </li>
+                <li>
+                  <span class="beneficiary-title">الهيئات:</span>
+                  الجهات الحكومية المخولة
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- مربع منصات تقديم الخدمة -->
+          <div class="section-box">
+            <div class="section-title">
+              <span class="section-title-icon">💻</span>
+              منصات تقديم الخدمة
+            </div>
+            <div class="section-content">
+              <div class="platforms-list">
+                
+                <div class="platform-item">
+                  <div class="platform-icon">🌐</div>
+                  <div class="platform-text">
+                    <div class="platform-title">الموقع الإلكتروني</div>
+                    <div class="platform-desc">24/7 عبر موقع النيابة العامة</div>
+                  </div>
+                </div>
+
+                <div class="platform-item">
+                  <div class="platform-icon">📱</div>
+                  <div class="platform-text">
+                    <div class="platform-title">تطبيق الهاتف الذكي</div>
+                    <div class="platform-desc">متوفر لأندرويد و iOS</div>
+                  </div>
+                </div>
+
+                <div class="platform-item">
+                  <div class="platform-icon">🏢</div>
+                  <div class="platform-text">
+                    <div class="platform-title">المراجعة الشخصية</div>
+                    <div class="platform-desc">مبنى النيابة العامة - الشارقة</div>
+                  </div>
+                </div>
+
+                <div class="platform-item">
+                  <div class="platform-icon">📞</div>
+                  <div class="platform-text">
+                    <div class="platform-title">الاستفسار الهاتفي</div>
+                    <div class="platform-desc">06-5693333 (8 ص - 2 م)</div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- زر المتابعة -->
+      <div style="padding: 1rem 1.5rem;">
+        <button class="continue-btn" onclick="proceedToService()">المتابعة إلى الخدمة</button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- نافذة تغيير اللغة -->
+  <div id="language-popup" class="language-popup">
+    <div class="language-popup-content">
+      <span class="close-btn" onclick="toggleLanguagePopup()" title="إغلاق">×</span>
+      <div class="language-header">🌐 اختر لغتك</div>
+      <p class="language-subtitle">يرجى اختيار اللغة المناسبة من القائمة أدناه</p>
+
+      <a href="shjpp-ar.html" class="lang-option" title="البقاء في العربية">
+        <img src="../imgs/language/AR.png" alt="العربية"> العربية
+      </a>
+      
+      <a href="shjpp-en.html" class="lang-option" title="Switch to English">
+        <img src="../imgs/language/EN.png" alt="English"> English
+      </a>
+    </div>
+  </div>
+
+  <!-- ============================== -->
+  <!--         جافاسكريبت            -->
+  <!-- ============================== -->
+  <script>
+    // فتح النافذة المنبثقة للخدمة
+    function openPopup() {
+      document.getElementById("popup").style.display = "flex";
+    }
+
+    // إغلاق النافذة المنبثقة للخدمة
+    function closePopup() {
+      document.getElementById("popup").style.display = "none";
+    }
+
+    // تبديل عرض نافذة اللغة
+    function toggleLanguagePopup() {
+      const popup = document.getElementById("language-popup");
+      const isVisible = popup.style.display === "flex";
+      
+      if (isVisible) {
+        popup.style.display = "none";
+      } else {
+        popup.style.display = "flex";
+        popup.style.justifyContent = "center";
+        popup.style.alignItems = "center";
+      }
+    }
+
+    // المتابعة إلى الخدمة
+    function proceedToService() {
+      window.open('https://shjpp.ae', '_blank');
+      closePopup();
+    }
+
+    // إغلاق النوافذ عند النقر خارجها
+    window.onclick = function(event) {
+      const servicePopup = document.getElementById("popup");
+      const languagePopup = document.getElementById("language-popup");
+      
+      if (event.target === servicePopup) {
+        servicePopup.style.display = "none";
+      }
+      
+      if (event.target === languagePopup) {
+        languagePopup.style.display = "none";
+      }
+    };
+
+    // إغلاق النوافذ بمفتاح Escape
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape') {
+        closePopup();
+        document.getElementById("language-popup").style.display = "none";
+      }
+    });
+
+    // تحسينات إضافية للهواتف
+    document.addEventListener('DOMContentLoaded', function() {
+      // تحسين الأداء للهواتف
+      if (window.innerWidth <= 768) {
+        // تحسين النوافذ المنبثقة للهواتف
+        const popup = document.getElementById("popup");
+        if (popup) {
+          popup.style.padding = "0.5rem";
+        }
+        
+        // تحسين التمرير للهواتف
+        document.body.style.overscrollBehavior = "contain";
+      }
+      
+      // تحسين تجربة اللمس للهواتف
+      const buttons = document.querySelectorAll('button, .card-action, .lang-option');
+      buttons.forEach(button => {
+        button.addEventListener('touchstart', function() {
+          this.style.transform = 'scale(0.98)';
+        });
+        
+        button.addEventListener('touchend', function() {
+          setTimeout(() => {
+            this.style.transform = '';
+          }, 150);
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>

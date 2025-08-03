@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../styles.css" />
+  <title>Public Prosecution Website - Sharjah</title>
+  <style>
+    /* Remove any background from header elements */
+    .header-container {
+      background: none !important;
+      background-color: transparent !important;
+    }
+    
+    .header-center {
+      background: none !important;
+      background-color: transparent !important;
+    }
+    
+    body.public-prosecution .header-container {
+      background: none !important;
+      background-color: transparent !important;
+    }
+    
+    body.public-prosecution .header-center {
+      background: none !important;
+      background-color: transparent !important;
+    }
+  </style>
+</head>
+
+<body class="public-prosecution">
+
+  <!-- ============================== -->
+  <!--            HEADER              -->
+  <!-- ============================== -->
+  <header>
+    <div class="header-container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; background: none !important; background-color: transparent !important;">
+      
+      <!-- Logo -->
+      <div class="header-left">
+        <img src="../imgs/shj_police.png" alt="Police Logo" class="logo" />
+      </div>
+      
+      <!-- Title -->
+      <div class="header-center" style="flex: 1; text-align: center; background: none !important; background-color: transparent !important;">
+        <h1 class="site-title" style="background: none !important; background-color: transparent !important;">Public Prosecution - Sharjah</h1>
+      </div>
+      
+      <!-- Navigation Buttons -->
+      <div class="header-right" style="display: flex; align-items: center; gap: 10px;">
+        <button onclick="toggleLanguagePopup()" class="lang-btn" title="Choose Language">
+          <img src="../imgs/world_black.png" alt="Choose Language" style="width: 24px; height: 24px;">
+        </button>
+        <a href="../home_page/index.html" class="lang-btn" title="Home Page">
+          <img src="../imgs/home_black.png" alt="Home" style="width: 24px; height: 24px;">
+        </a>
+      </div>
+      
+    </div>
+  </header>
+
+  <hr />
+
+  <!-- ============================== -->
+  <!--         MAIN CONTENT           -->
+  <!-- ============================== -->
+  <main class="page-container">
+    
+    <!-- Main Website Button -->
+    <a href="https://shjpp.ae" class="main-button" title="Visit Official Public Prosecution Website" target="_blank" rel="noopener">
+      Public Prosecution Website - Sharjah
+    </a>
+
+    <!-- Instructional Images Section -->
+    <section class="image-stack">
+      
+      <img src="../imgs/shjpp/shjpp-EN/en1.jpg" alt="Step 1 - How to extract petition number" loading="lazy" />
+      
+      <img src="../imgs/shjpp/shjpp-EN/en2.jpg" alt="Step 2 - Fill in required information" loading="lazy" />
+      
+      <img src="../imgs/shjpp/shjpp-EN/en3.jpg" alt="Step 3 - Confirm the information" loading="lazy" />
+      
+      <img src="../imgs/shjpp/shjpp-EN/en4.jpg" alt="Step 4 - Get petition number" loading="lazy" />
+      
+      <img src="../imgs/shjpp/shjpp-EN/en5.jpg" alt="Step 5 - Complete the process" loading="lazy" />
+      
+    </section>
+
+  </main>
+
+  <!-- ============================== -->
+  <!--      LANGUAGE POPUP            -->
+  <!-- ============================== -->
+  <div id="language-popup" class="language-popup">
+    <div class="language-popup-content">
+      
+      <!-- Close Button -->
+      <span class="close-btn" onclick="toggleLanguagePopup()" title="Close">×</span>
+      
+      <!-- Popup Header -->
+      <div class="language-header">🌐 Choose Your Language</div>
+      <p class="language-subtitle">Please select the appropriate language from the list below</p>
+
+      <!-- Language Options -->
+      <a href="shjpp-ar1.html" class="lang-option" title="Switch to Arabic">
+        <img src="../imgs/lan/AR.png" alt="Arabic"> 
+        العربية
+      </a>
+      
+      <a href="shjpp-en1.html" class="lang-option" title="Stay in English">
+        <img src="../imgs/lan/EN.png" alt="English"> 
+        English
+      </a>
+      
+    </div>
+  </div>
+
+  <!-- ============================== -->
+  <!--         JAVASCRIPT             -->
+  <!-- ============================== -->
+  <script>
+    // Toggle language popup display
+    function toggleLanguagePopup() {
+      const popup = document.getElementById("language-popup");
+      const isVisible = popup.style.display === "flex";
+      
+      if (isVisible) {
+        popup.style.display = "none";
+      } else {
+        popup.style.display = "flex";
+        popup.style.justifyContent = "center";
+        popup.style.alignItems = "center";
+      }
+    }
+
+    // Close popup when clicking outside
+    window.onclick = function(event) {
+      const popup = document.getElementById("language-popup");
+      if (event.target === popup) {
+        popup.style.display = "none";
+      }
+    };
+
+    // Close popup with Escape key
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape') {
+        document.getElementById("language-popup").style.display = "none";
+      }
+    });
+
+    // Improve image loading - Lazy Loading
+    document.addEventListener('DOMContentLoaded', function() {
+      const images = document.querySelectorAll('img[loading="lazy"]');
+      
+      // Add fade effect when images load
+      images.forEach(img => {
+        img.addEventListener('load', function() {
+          this.style.opacity = '1';
+        });
+      });
+    });
+
+    // Remove any remaining backgrounds when page loads
+    document.addEventListener('DOMContentLoaded', function() {
+      const headerContainer = document.querySelector('.header-container');
+      const headerCenter = document.querySelector('.header-center');
+      const siteTitle = document.querySelector('.site-title');
+      
+      if (headerContainer) {
+        headerContainer.style.background = 'none';
+        headerContainer.style.backgroundColor = 'transparent';
+      }
+      
+      if (headerCenter) {
+        headerCenter.style.background = 'none';
+        headerCenter.style.backgroundColor = 'transparent';
+      }
+      
+      if (siteTitle) {
+        siteTitle.style.background = 'none';
+        siteTitle.style.backgroundColor = 'transparent';
+      }
+    });
+  </script>
+
+</body>
+</html>

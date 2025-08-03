@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Nunito:wght@300;400;500;600;700&display=swap');
+
+    :root {
+      --primary-color: #4a90a4;
+      --secondary-color: #5a6c7d;
+      --accent-color: #7fb3d3;
+      --soft-blue: #a8d0e6;
+      --background-primary: #f8fafb;
+      --background-soft: #f5f7f9;
+      --surface-color: #ffffff;
+      --text-primary: #2c3e50;
+      --text-secondary: #5a6c7d;
+      --text-subtle: #8fa7b3;
+      --border-color: #e8ecef;
+      --border-soft: #f0f3f6;
+      --shadow-soft: rgba(74, 144, 164, 0.08);
+      --shadow-medium: rgba(74, 144, 164, 0.12);
+      --shadow-elevated: rgba(74, 144, 164, 0.16);
+      --gradient-soft: linear-gradient(135deg, var(--background-primary), var(--background-soft));
+      --gradient-accent: linear-gradient(135deg, var(--soft-blue), var(--accent-color));
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+      font-family: "Inter", sans-serif;
+    }
+
+    body {
+      background: var(--gradient-soft);
+      color: var(--text-primary);
+      line-height: 1.65;
+      font-size: 15px;
+      min-height: 100vh;
+      font-weight: 400;
+      letter-spacing: 0.01em;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    /* عنوان الصفحة */
+    .page-header {
+      text-align: center;
+      margin-bottom: 3rem;
+      background: var(--surface-color);
+      padding: 2.5rem;
+      border-radius: 20px;
+      box-shadow: 0 8px 28px var(--shadow-soft);
+      border: 1px solid var(--border-soft);
+    }
+
+    .page-title {
+      font-size: 2.2rem;
+      color: var(--primary-color);
+      font-family: "Nunito", sans-serif;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .page-subtitle {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* حاوي الخطوات */
+    .steps-container {
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+    }
+
+    /* كل خطوة */
+    .step-card {
+      background: var(--surface-color);
+      border-radius: 20px;
+      padding: 2.5rem;
+      box-shadow: 0 8px 28px var(--shadow-soft);
+      border: 1px solid var(--border-soft);
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .step-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 36px var(--shadow-medium);
+      border-color: var(--accent-color);
+    }
+
+    /* خط الربط بين الخطوات */
+    .step-card:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      bottom: -1.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 2px;
+      height: 3rem;
+      background: var(--gradient-accent);
+      z-index: 10;
+    }
+
+    /* رأس الخطوة */
+    .step-header {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 2px solid var(--border-soft);
+    }
+
+    .step-number {
+      background: var(--gradient-accent);
+      color: white;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      font-weight: 700;
+      box-shadow: 0 4px 15px var(--shadow-soft);
+      flex-shrink: 0;
+    }
+
+    .step-title {
+      font-size: 1.4rem;
+      color: var(--primary-color);
+      font-family: "Nunito", sans-serif;
+      font-weight: 600;
+      flex: 1;
+    }
+
+    /* محتوى الخطوة */
+    .step-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    /* منطقة الصورة */
+    .step-image {
+      position: relative;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 8px 24px var(--shadow-soft);
+      border: 1px solid var(--border-color);
+    }
+
+    .step-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+
+    .step-image:hover img {
+      transform: scale(1.02);
+    }
+
+    /* تسمية الصورة */
+    .image-label {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: rgba(255, 255, 255, 0.95);
+      color: var(--primary-color);
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    /* منطقة الشرح */
+    .step-description {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .description-text {
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      background: var(--background-soft);
+      padding: 1.5rem;
+      border-radius: 12px;
+      border-left: 4px solid var(--accent-color);
+    }
+
+    /* نقاط مهمة */
+    .important-points {
+      background: var(--background-soft);
+      border-radius: 12px;
+      padding: 1.5rem;
+      border: 1px solid var(--border-soft);
+    }
+
+    .points-title {
+      color: var(--primary-color);
+      font-weight: 600;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .points-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .points-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.8rem;
+      margin-bottom: 0.8rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .points-list li:last-child {
+      margin-bottom: 0;
+    }
+
+    .points-list li::before {
+      content: "✓";
+      color: var(--accent-color);
+      font-weight: bold;
+      font-size: 1.1rem;
+      margin-top: 0.1rem;
+    }
+
+    /* تصميم الخطوة الأخيرة */
+    .step-card.final-step {
+      background: var(--gradient-accent);
+      color: white;
+    }
+
+    .step-card.final-step .step-title {
+      color: white;
+    }
+
+    .step-card.final-step .description-text {
+      background: rgba(255, 255, 255, 0.1);
+      border-left-color: white;
+      color: white;
+    }
+
+    .step-card.final-step .important-points {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .step-card.final-step .points-title {
+      color: white;
+    }
+
+    .step-card.final-step .points-list li {
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    /* أزرار التنقل */
+    .navigation-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 3rem;
+      padding: 2rem;
+      background: var(--surface-color);
+      border-radius: 20px;
+      box-shadow: 0 8px 28px var(--shadow-soft);
+    }
+
+    .nav-btn {
+      background: var(--gradient-accent);
+      color: white;
+      border: none;
+      padding: 12px 28px;
+      border-radius: 25px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      box-shadow: 0 4px 15px var(--shadow-soft);
+    }
+
+    .nav-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px var(--shadow-medium);
+    }
+
+    .nav-btn.secondary {
+      background: var(--background-soft);
+      color: var(--primary-color);
+      border: 1px solid var(--border-color);
+    }
+
+    /* الهيدر */
+    header {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(20px);
+      color: var(--text-primary);
+      padding: 1.25rem 2rem;
+      box-shadow: 0 2px 20px var(--shadow-soft);
+      border-bottom: 1px solid var(--border-soft);
+      position: relative;
+      margin-bottom: 2rem;
+    }
+
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .logo {
+      width: 48px;
+      height: 48px;
+      object-fit: contain;
+      filter: drop-shadow(0 2px 8px var(--shadow-soft));
+      transition: all 0.3s ease;
+      background: var(--surface-color);
+      border-radius: 6px;
+      padding: 3px;
+      border: 1px solid var(--border-soft);
+    }
+
+    .logo:hover {
+      transform: scale(1.05);
+      filter: drop-shadow(0 4px 12px var(--shadow-medium));
+    }
+
+    .site-title {
+      font-size: 1.35rem;
+      color: var(--text-primary);
+      margin: 0;
+      font-weight: 500;
+      font-family: "Nunito", sans-serif;
+      letter-spacing: -0.01em;
+    }
+
+    .lang-btn {
+      background: var(--surface-color) !important;
+      color: var(--primary-color) !important;
+      border: 1px solid var(--border-color) !important;
+      padding: 0.6rem 1.1rem;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      box-shadow: 0 2px 8px var(--shadow-soft) !important;
+      font-weight: 450;
+    }
+
+    .lang-btn:hover {
+      background: var(--background-soft) !important;
+      border-color: var(--accent-color) !important;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px var(--shadow-medium) !important;
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    /* نافذة اللغة */
+    .language-popup {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(44, 62, 80, 0.4);
+      z-index: 9999;
+      backdrop-filter: blur(8px);
+    }
+
+    .language-popup-content {
+      background: var(--surface-color);
+      padding: 2.25rem;
+      border-radius: 20px;
+      width: 90%;
+      max-width: 380px;
+      text-align: center;
+      box-shadow: 0 20px 50px var(--shadow-elevated);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border: 1px solid var(--border-color);
+    }
+
+    .language-header {
+      font-size: 1.4rem;
+      color: var(--primary-color);
+      margin-bottom: 0.75rem;
+      font-weight: 600;
+      font-family: "Nunito", sans-serif;
+    }
+
+    .language-subtitle {
+      font-size: 0.95rem;
+      margin-bottom: 1.75rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    .lang-option {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--text-primary);
+      background: var(--background-soft);
+      padding: 12px 16px;
+      margin-bottom: 12px;
+      border-radius: 12px;
+      transition: all 0.25s ease;
+      font-size: 0.95rem;
+      border: 1px solid var(--border-soft);
+      font-weight: 450;
+    }
+
+    .lang-option:hover {
+      background: var(--accent-color);
+      color: var(--surface-color);
+      transform: translateX(4px);
+      border-color: var(--accent-color);
+      box-shadow: 0 4px 12px var(--shadow-soft);
+    }
+
+    .lang-option img {
+      width: 28px;
+      height: 28px;
+      border-radius: 4px;
+      box-shadow: 0 1px 4px var(--shadow-soft);
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 16px;
+      right: 20px;
+      color: var(--text-subtle);
+      font-size: 24px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      transition: all 0.25s ease;
+    }
+
+    /* تصميم الهواتف */
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      header {
+        padding: 1rem;
+        margin-bottom: 1rem;
+      }
+
+      .header-container {
+        padding: 0.5rem;
+      }
+
+      .site-title {
+        font-size: 1.2rem;
+      }
+
+      .logo {
+        width: 40px;
+        height: 40px;
+      }
+
+      .page-header {
+        padding: 2rem 1.5rem;
+      }
+
+      .page-title {
+        font-size: 1.8rem;
+      }
+
+      .step-card {
+        padding: 2rem 1.5rem;
+      }
+
+      .step-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .step-header {
+        gap: 1rem;
+      }
+
+      .step-number {
+        width: 40px;
+        height: 40px;
+        font-size: 1.1rem;
+      }
+
+      .step-title {
+        font-size: 1.2rem;
+      }
+
+      .description-text {
+        padding: 1.2rem;
+        font-size: 1rem;
+      }
+
+      .navigation-buttons {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1.5rem;
+      }
+
+      .nav-btn {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      .page-header {
+        padding: 2rem 1.5rem;
+      }
+
+      .page-title {
+        font-size: 1.8rem;
+      }
+
+      .step-card {
+        padding: 2rem 1.5rem;
+      }
+
+      .step-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .step-header {
+        gap: 1rem;
+      }
+
+      .step-number {
+        width: 40px;
+        height: 40px;
+        font-size: 1.1rem;
+      }
+
+      .step-title {
+        font-size: 1.2rem;
+      }
+
+      .description-text {
+        padding: 1.2rem;
+        font-size: 1rem;
+      }
+
+      .navigation-buttons {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1.5rem;
+      }
+
+      .nav-btn {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  </style>
+  <title>شرح استخراج رقم العريضة</title>
+</head>
+
+<body>
+
+  <!-- ============================== -->
+  <!--            الهيدر             -->
+  <!-- ============================== -->
+  <header>
+    <div class="header-container">
+      
+      <div class="header-right">
+        <img src="../imgs/shj_police.png" alt="شعار الشرطة" class="logo" />
+      </div>
+
+      <div class="header-center">
+        <h1 class="site-title">موقع النيابة العامة</h1>
+      </div>
+
+      <div class="header-left">
+        <a href="../home_page/index.html" class="plain-link" title="الصفحة الرئيسية">
+          <img src="../imgs/home_black.png" alt="الرئيسية" style="width: 24px; height: 24px;">
+        </a>
+        <button onclick="toggleLanguagePopup()" class="lang-btn" title="اختر اللغة">
+          <img src="../imgs/world_black.png" alt="اختر اللغة" style="width: 24px; height: 24px;">
+        </button>
+      </div>
+      
+    </div>
+  </header>
+
+  <hr />
+
+  <div class="container">
+    
+    <!-- رأس الصفحة -->
+    <div class="page-header">
+      <h1 class="page-title">📄 شرح استخراج رقم العريضة</h1>
+      <p class="page-subtitle">
+        دليل شامل خطوة بخطوة لمعرفة كيفية استخراج رقم العريضة من موقع النيابة العامة بطريقة سهلة ومبسطة
+      </p>
+    </div>
+
+    <!-- حاوي الخطوات -->
+    <div class="steps-container">
+      
+      <!-- الخطوة الأولى -->
+      <div class="step-card">
+        <div class="step-header">
+          <div class="step-number">1</div>
+          <h2 class="step-title">الدخول إلى موقع النيابة العامة وتسجيل الدخول</h2>
+        </div>
+        
+        <div class="step-content">
+          <div class="step-image">
+            <img src="../imgs/step1.png" alt="الصفحة الرئيسية لموقع النيابة العامة">
+            <div class="image-label">تسجيل الدخول</div>
+          </div>
+          
+          <div class="step-description">
+            <div class="description-text">
+              ادخل إلى موقع النيابة العامة وقم بتسجيل الدخول عن طريق الهوية الرقمية. اضغط على زر "تسجيل الدخول" الموضح في الصورة.
+            </div>
+            
+            <div class="important-points">
+              <div class="points-title">
+                💡 متطلبات الدخول:
+              </div>
+              <ul class="points-list">
+                <li>يجب أن تكون مسجلاً في الهوية الرقمية UAE PASS</li>
+                <li>تأكد من تفعيل الهوية الرقمية مسبقاً</li>
+                <li>الخدمة متاحة للمواطنين والمقيمين</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- الخطوة الثانية -->
+      <div class="step-card">
+        <div class="step-header">
+          <div class="step-number">2</div>
+          <h2 class="step-title">الدخول إلى سجل المتعامل</h2>
+        </div>
+        
+        <div class="step-content">
+          <div class="step-image">
+            <img src="../imgs/step2.png" alt="صفحة سجل المتعامل">
+            <div class="image-label">سجل المتعامل</div>
+          </div>
+          
+          <div class="step-description">
+            <div class="description-text">
+              بعد تسجيل الدخول بنجاح، ستظهر لك الصفحة الرئيسية لحسابك. اضغط على أيقونة "سجل المتعامل" الموضحة في الصورة للوصول إلى ملفاتك.
+            </div>
+            
+            <div class="important-points">
+              <div class="points-title">
+                📂 في هذه الصفحة ستجد:
+              </div>
+              <ul class="points-list">
+                <li>عدد الملفات المنجزة والمعلقة</li>
+                <li>إحصائيات حسابك الشخصي</li>
+                <li>خيارات الملف الشخصي والخدمات</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- الخطوة الثالثة -->
+      <div class="step-card">
+        <div class="step-header">
+          <div class="step-number">3</div>
+          <h2 class="step-title">اختيار ملف "المنجز" ثم "طلباتي"</h2>
+        </div>
+        
+        <div class="step-content">
+          <div class="step-image">
+            <img src="../imgs/step3.png" alt="اختيار المنجز وطلباتي">
+            <div class="image-label">الملفات المنجزة</div>
+          </div>
+          
+          <div class="step-description">
+            <div class="description-text">
+              من صفحة سجل المتعامل، اضغط على ملف "منجزة" (الذي يظهر الرقم 1)، ثم اضغط على تبويب "طلباتي" في الأسفل لعرض جميع طلباتك المنجزة.
+            </div>
+            
+            <div class="important-points">
+              <div class="points-title">
+                📋 ستجد هنا:
+              </div>
+              <ul class="points-list">
+                <li>جميع الطلبات المكتملة والموافق عليها</li>
+                <li>تفاصيل كل طلب مع رقمه المرجعي</li>
+                <li>تواريخ تقديم ومعالجة الطلبات</li>
+                <li>إمكانية البحث في الطلبات القديمة</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- الخطوة الرابعة -->
+      <div class="step-card">
+        <div class="step-header">
+          <div class="step-number">4</div>
+          <h2 class="step-title">الضغط على رقم الطلب لعرض التفاصيل</h2>
+        </div>
+        
+        <div class="step-content">
+          <div class="step-image">
+            <img src="../imgs/step4.png" alt="الضغط على رقم الطلب">
+            <div class="image-label">تفاصيل الطلب</div>
+          </div>
+          
+          <div class="step-description">
+            <div class="description-text">
+              ستظهر لك قائمة بجميع طلباتك المنجزة. اضغط على رقم الطلب الذي تريد معرفة تفاصيل العريضة الخاصة به (مثل الرقم 251172094 الموضح في الصورة).
+            </div>
+            
+            <div class="important-points">
+              <div class="points-title">
+                🔍 معلومات مفيدة:
+              </div>
+              <ul class="points-list">
+                <li>كل طلب له رقم مرجعي فريد</li>
+                <li>يظهر تاريخ تقديم الطلب ومعالجته</li>
+                <li>حالة الطلب تظهر كـ "منفذ" للطلبات المكتملة</li>
+                <li>يمكن البحث بالرقم أو التاريخ</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- الخطوة الخامسة والأخيرة -->
+      <div class="step-card final-step">
+        <div class="step-header">
+          <div class="step-number">5</div>
+          <h2 class="step-title">عرض تفاصيل العريضة والمركز المختص</h2>
+        </div>
+        
+        <div class="step-content">
+          <div class="step-image">
+            <img src="../imgs/step5.png" alt="تفاصيل العريضة الكاملة">
+            <div class="image-label">تفاصيل العريضة</div>
+          </div>
+          
+          <div class="step-description">
+            <div class="description-text">
+              ستظهر لك نافذة تحتوي على جميع تفاصيل العريضة المطلوبة، بما في ذلك رقم العريضة النهائي والمركز المختص الذي يجب التوجه إليه.
+            </div>
+            
+            <div class="important-points">
+              <div class="points-title">
+                📋 المعلومات المعروضة:
+              </div>
+              <ul class="points-list">
+                <li><strong>رقم العريضة:</strong> 2025/1130 (كما في المثال)</li>
+                <li><strong>المركز المختص:</strong> مركز البحيرة - الشارقة</li>
+                <li><strong>النيابة المختصة:</strong> نيابة الشارقة الكلية</li>
+                <li><strong>الرقم المرجعي:</strong> للمتابعة والاستفسارات</li>
+                <li>تاريخ الواقعة ومعلومات إضافية</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- أزرار التنقل -->
+    <div class="navigation-buttons">
+      <a href="shjpp-ar.html" class="nav-btn secondary">
+        ← العودة للخدمات
+      </a>
+      <a href="https://shjpp.ae" target="_blank" class="nav-btn">
+        🚀 ابدأ الاستعلام الآن
+      </a>
+    </div>
+
+  </div>
+
+  <!-- نافذة تغيير اللغة -->
+  <div id="language-popup" class="language-popup">
+    <div class="language-popup-content">
+      <span class="close-btn" onclick="toggleLanguagePopup()" title="إغلاق">×</span>
+      <div class="language-header">🌐 اختر لغتك</div>
+      <p class="language-subtitle">يرجى اختيار اللغة المناسبة من القائمة أدناه</p>
+
+      <a href="shjpp-ar.html" class="lang-option" title="البقاء في العربية">
+        <img src="../imgs/language/AR.png" alt="العربية"> العربية
+      </a>
+      
+      <a href="shjpp-en.html" class="lang-option" title="Switch to English">
+        <img src="../imgs/language/EN.png" alt="English"> English
+      </a>
+    </div>
+  </div>
+
+  <script>
+    // تبديل عرض نافذة اللغة
+    function toggleLanguagePopup() {
+      const popup = document.getElementById("language-popup");
+      const isVisible = popup.style.display === "flex";
+      
+      if (isVisible) {
+        popup.style.display = "none";
+      } else {
+        popup.style.display = "flex";
+        popup.style.justifyContent = "center";
+        popup.style.alignItems = "center";
+      }
+    }
+
+    // إغلاق النوافذ عند النقر خارجها
+    window.onclick = function(event) {
+      const languagePopup = document.getElementById("language-popup");
+      
+      if (event.target === languagePopup) {
+        languagePopup.style.display = "none";
+      }
+    };
+
+    // إغلاق النوافذ بمفتاح Escape
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape') {
+        document.getElementById("language-popup").style.display = "none";
+      }
+    });
+  </script>
+
+</body>
+</html>
