@@ -1,168 +1,0 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>الهوية الرقمية</title>
-  <link rel="stylesheet" href="../styles.css" />
-</head>
-
-<body>
-
-  <!-- ============================== -->
-  <!--            الهيدر             -->
-  <!-- ============================== -->
-  <header>
-    <div class="header-container responsive-header" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
-      
-      <!-- الشعار -->
-      <div class="header-right">
-        <img src="../imgs/shj_police.png" alt="شعار الشرطة" class="logo" />
-      </div>
-
-      <!-- العنوان -->
-      <div class="header-center" style="flex: 1; text-align: center;">
-        <h1 class="site-title" style="margin: 0; color: white;">الهوية الرقمية</h1>
-      </div>
-
-      <!-- أزرار التنقل -->
-      <div class="header-left" style="display: flex; align-items: center; gap: 10px;">
-        <a href="../home_page/index.html" class="lang-btn" title="الصفحة الرئيسية">
-          <img src="../imgs/home_white.png" alt="الرئيسية" style="width: 24px; height: 24px;">
-        </a>
-        <button onclick="toggleLanguagePopup()" class="lang-btn" title="اختر اللغة">
-          <img src="../imgs/world_white.png" alt="اختر اللغة" style="width: 24px; height: 24px;">
-        </button>
-      </div>
-
-    </div>
-  </header>
-
-  <hr />
-
-  <!-- ============================== -->
-  <!--         المحتوى الرئيسي        -->
-  <!-- ============================== -->
-  <main>
-    
-    <!-- قسم الفيديوهات التعليمية -->
-    <section class="video-section">
-      
-      <!-- فيديو إنشاء الحساب -->
-      <div class="video-block">
-        <h2 class="video-title">شرح انشاء حساب الهوية الرقمية</h2>
-        <iframe
-          src="https://www.youtube.com/embed/SZmM99bJNcY"
-          title="شرح انشاء حساب الهوية الرقمية"
-          allowfullscreen
-          loading="lazy">
-        </iframe>
-      </div>
-
-      <!-- فيديو توثيق الحساب -->
-      <div class="video-block">
-        <h2 class="video-title">طريقة توثيق حساب الهوية الرقمية</h2>
-        <iframe
-          src="https://www.youtube.com/embed/_eANW7n4U-0"
-          title="طريقة توثيق حساب الهوية الرقمية"
-          allowfullscreen
-          loading="lazy">
-        </iframe>
-      </div>
-      
-    </section>
-
-    <!-- قسم تحميل التطبيق -->
-    <section class="app-download">
-      
-      <h3 class="app-download-title">لتحميل تطبيق الهوية الرقمية</h3>
-      
-      <div class="app-download-section">
-        
-        <!-- رابط App Store -->
-        <a href="https://apps.apple.com/ae/app/uae-pass/id1377158818" target="_blank" title="تحميل من App Store" rel="noopener">
-          <img src="../imgs/app_store.png" alt="تحميل من App Store" class="store-badge" />
-        </a>
-        
-        <!-- رابط Google Play -->
-        <a href="https://play.google.com/store/apps/details?id=ae.uaepass.mainapp" target="_blank" title="تحميل من Google Play" rel="noopener">
-          <img src="../imgs/google_play.png" alt="تحميل من Google Play" class="store-badge" />
-        </a>
-        
-      </div>
-      
-    </section>
-
-  </main>
-
-  <!-- ============================== -->
-  <!--        نافذة تغيير اللغة       -->
-  <!-- ============================== -->
-  <div id="language-popup" class="language-popup">
-    <div class="language-popup-content">
-      
-      <!-- زر الإغلاق -->
-      <span class="close-btn" onclick="toggleLanguagePopup()" title="إغلاق">×</span>
-      
-      <!-- رأس النافذة -->
-      <div class="language-header">🌐 اختر لغتك</div>
-      <p class="language-subtitle">يرجى اختيار اللغة المناسبة من القائمة أدناه</p>
-
-      <!-- خيارات اللغة -->
-      <a href="uaepass-ar.html" class="lang-option" title="التبديل للعربية">
-        <img src="../imgs/language/AR.png" alt="العربية"> 
-        العربية
-      </a>
-      
-      <a href="uaepass-en.html" class="lang-option" title="Switch to English">
-        <img src="../imgs/language/EN.png" alt="English"> 
-        English
-      </a>
-      
-    </div>
-  </div>
-
-  <!-- ============================== -->
-  <!--         جافاسكريبت            -->
-  <!-- ============================== -->
-  <script>
-    // تبديل عرض نافذة اللغة
-    function toggleLanguagePopup() {
-      const popup = document.getElementById("language-popup");
-      const isVisible = popup.style.display === "flex";
-      
-      if (isVisible) {
-        popup.style.display = "none";
-      } else {
-        popup.style.display = "flex";
-        popup.style.justifyContent = "center";
-        popup.style.alignItems = "center";
-      }
-    }
-
-    // إغلاق النافذة عند النقر خارجها
-    window.onclick = function(event) {
-      const popup = document.getElementById("language-popup");
-      if (event.target === popup) {
-        popup.style.display = "none";
-      }
-    };
-
-    // إغلاق النافذة بمفتاح Escape
-    document.addEventListener('keydown', function(event) {
-      if (event.key === 'Escape') {
-        document.getElementById("language-popup").style.display = "none";
-      }
-    });
-
-    // تحسين أداء الفيديو - إيقاف التشغيل عند إغلاق الصفحة
-    window.addEventListener('beforeunload', function() {
-      const iframes = document.querySelectorAll('iframe');
-      iframes.forEach(iframe => {
-        iframe.src = '';
-      });
-    });
-  </script>
-
-</body>
-</html>
